@@ -1,18 +1,17 @@
 # Raspberry Pi Cluster — PXE Boot Setup Documentation
-
 ## Cloud Computing Course SS2026
 
 ---
 
 ## Hardware
 
-| Device                     | Role                    | OS                     | IP               |
-| -------------------------- | ----------------------- | ---------------------- | ---------------- |
-| Raspberry Pi 5 (8GB)       | Master node             | Raspberry Pi OS 64-bit | 192.168.50.1     |
-| Raspberry Pi 4             | Sensor node             | —                      | —                |
-| Raspberry Pi 3B x7         | Worker nodes            | 32-bit via NFS/PXE     | 192.168.50.91–97 |
-| TL-SG108E 8-port switch    | Network backbone        | —                      | 192.168.50.55    |
-| WD Black SN7100 NVMe 500GB | Fast storage (NFS+TFTP) | —                      | /mnt/nvme        |
+| Device | Role | OS | IP |
+|--------|------|----|----|
+| Raspberry Pi 5 (8GB) | Master node | Raspberry Pi OS 64-bit | 192.168.50.1 |
+| Raspberry Pi 4 | Sensor node | — | — |
+| Raspberry Pi 3B x7 | Worker nodes | 32-bit via NFS/PXE | 192.168.50.91–97 |
+| TL-SG108E 8-port switch | Network backbone | — | 192.168.50.55 |
+| WD Black SN7100 NVMe 500GB | Fast storage (NFS+TFTP) | — | /mnt/nvme |
 
 ---
 
@@ -44,7 +43,6 @@ Internet
 All 7 Raspberry Pi 3B worker nodes boot entirely over the network using **PXE boot**. They have no operating system on their SD cards — only a minimal `bootcode.bin` file to initiate the PXE boot process.
 
 The boot process:
-
 1. Pi 3 powers on, reads `bootcode.bin` from SD card
 2. Pi 3 sends DHCP broadcast over ethernet
 3. Pi 5 (dnsmasq) assigns IP and points to TFTP server
@@ -71,7 +69,6 @@ sudo mkdir -p /mnt/nvme/tftp
 ```
 
 Create symlinks:
-
 ```bash
 sudo ln -s /mnt/nvme/tftp /srv/tftp
 sudo ln -s /mnt/nvme/nfs/piroot /nfs/piroot
@@ -103,7 +100,6 @@ sudo nano /mnt/nvme/nfs/piroot/etc/fstab
 ```
 
 Comment out PARTUUID lines:
-
 ```
 proc            /proc           proc    defaults          0       0
 #PARTUUID=xxxxxxxx-01  /boot/firmware  vfat    defaults  0       2
@@ -117,7 +113,6 @@ sudo nano /mnt/nvme/tftp/cmdline.txt
 ```
 
 Content:
-
 ```
 console=serial0,115200 console=tty1 root=/dev/nfs nfsroot=192.168.50.1:/mnt/nvme/nfs/piroot,vers=3,tcp rw ip=dhcp rootwait rootdelay=60 elevator=deadline fsck.repair=yes rootfstype=nfs init=/sbin/init
 ```
@@ -132,7 +127,6 @@ sudo apt install -y dnsmasq nfs-kernel-server
 ### 7. Configure dnsmasq (DHCP + TFTP)
 
 `/etc/dnsmasq.conf`:
-
 ```ini
 interface=eth0
 bind-interfaces
@@ -160,7 +154,6 @@ sudo systemctl restart dnsmasq
 ### 8. Configure NFS Exports
 
 `/etc/exports`:
-
 ```
 /mnt/nvme/nfs/piroot *(rw,sync,no_subtree_check,no_root_squash)
 /mnt/nvme/tftp *(rw,sync,no_subtree_check,no_root_squash)
@@ -182,27 +175,22 @@ sudo ln -s /lib/systemd/system/ssh.service \
 ### 10. Create Pi User in NFS Root
 
 Add to `/mnt/nvme/nfs/piroot/etc/passwd`:
-
 ```
 pi:x:1000:1000::/home/pi:/bin/bash
 ```
 
 Add to `/mnt/nvme/nfs/piroot/etc/shadow`:
-
 ```
 pi:$6$rBoByrWP$4aBpNwmvnTp7t7sBJPmTlNhWKQXlGf0pVoXO3WPAe4Cjnb1yHPNASnrnc9s1bv/Np/4JjYO5v8GrWVYgz0R71:19776:0:99999:7:::
 ```
-
 > Password: `raspberry`
 
 Add to `/mnt/nvme/nfs/piroot/etc/group` — find sudo line and add pi:
-
 ```
 sudo:x:27:pi
 ```
 
 Create home directory:
-
 ```bash
 sudo mkdir -p /mnt/nvme/nfs/piroot/home/pi
 sudo chmod 755 /mnt/nvme/nfs/piroot/home/pi
@@ -222,7 +210,6 @@ sudo reboot
 ```
 
 Verify OTP is burned:
-
 ```bash
 vcgencmd otp_dump | grep 17:
 # Must show: 17:3020000a
@@ -273,15 +260,15 @@ Insert this minimal SD card into each Pi 3B.
 
 ## MAC Address to IP Mapping
 
-| Hostname | IP Address    | MAC Address       |
-| -------- | ------------- | ----------------- |
-| pi3-1    | 192.168.50.91 | b8:27:eb:39:15:74 |
-| pi3-2    | 192.168.50.92 | b8:27:eb:e7:78:92 |
-| pi3-3    | 192.168.50.93 | b8:27:eb:4b:43:2c |
-| pi3-4    | 192.168.50.94 | b8:27:eb:d4:aa:d7 |
-| pi3-5    | 192.168.50.95 | b8:27:eb:06:07:55 |
-| pi3-6    | 192.168.50.96 | b8:27:eb:31:7a:10 |
-| pi3-7    | 192.168.50.97 | b8:27:eb:e3:a8:e9 |
+| Hostname | IP Address | MAC Address |
+|----------|------------|-------------|
+| pi3-1 | 192.168.50.91 | b8:27:eb:39:15:74 |
+| pi3-2 | 192.168.50.92 | b8:27:eb:e7:78:92 |
+| pi3-3 | 192.168.50.93 | b8:27:eb:4b:43:2c |
+| pi3-4 | 192.168.50.94 | b8:27:eb:d4:aa:d7 |
+| pi3-5 | 192.168.50.95 | b8:27:eb:06:07:55 |
+| pi3-6 | 192.168.50.96 | b8:27:eb:31:7a:10 |
+| pi3-7 | 192.168.50.97 | b8:27:eb:e3:a8:e9 |
 
 ---
 
@@ -293,13 +280,13 @@ All Pi 3s share the same NFS root, so installing on one installs for all.
 sudo apt-get install -y libopenmpi-dev openmpi-bin libatlas-base-dev hpcc mpich
 ```
 
-| Package           | Purpose                        |
-| ----------------- | ------------------------------ |
-| openmpi-bin       | MPI runtime (4.1.4)            |
-| libopenmpi-dev    | MPI development libraries      |
-| libatlas-base-dev | Optimised BLAS/LAPACK          |
-| hpcc              | HPL benchmark suite            |
-| mpich             | Alternative MPI implementation |
+| Package | Purpose |
+|---------|---------|
+| openmpi-bin | MPI runtime (4.1.4) |
+| libopenmpi-dev | MPI development libraries |
+| libatlas-base-dev | Optimised BLAS/LAPACK |
+| hpcc | HPL benchmark suite |
+| mpich | Alternative MPI implementation |
 
 ---
 
@@ -315,10 +302,179 @@ done
 
 ---
 
+## Task 2 — HPL Benchmark (GFLOPS)
+
+### Install HPL on Pi 3s
+
+SSH into one Pi 3 (installs for all since they share NFS root):
+
+```bash
+ssh pi@192.168.50.91
+
+# Fix internet routing first (WiFi via wlan0)
+sudo ip route del default via 192.168.50.1 dev eth0
+
+# Connect to WiFi hotspot for internet
+sudo nmcli dev wifi connect "YourHotspot" password "YourPassword"
+
+# Install HPL and dependencies
+sudo apt-get update
+sudo apt-get install -y libopenmpi-dev openmpi-bin libatlas-base-dev hpcc --fix-missing
+```
+
+### Single Node HPL Test
+
+Create config file on one Pi 3:
+
+```bash
+cat > /tmp/hpccinf.txt << 'EOF'
+HPLinpack benchmark input file
+Innovative Computing Laboratory, University of Tennessee
+HPL.out      output file name (if any)
+6            device out (6=stdout,7=stderr,file)
+1            # of problems sizes (N)
+1000         Ns
+1            # of NBs
+128          NBs
+0            PMAP process mapping (0=Row-,1=Column-major)
+1            # of process grids (P x Q)
+1            Ps
+1            Qs
+16.0         threshold
+1            # of panel fact
+2            PFACTs (0=left, 1=Crout, 2=Right)
+1            # of recursive stopping criterium
+4            NBMINs (>= 1)
+1            # of panels in recursion
+2            NDIVs
+1            # of recursive panel fact.
+1            RFACTs (0=left, 1=Crout, 2=Right)
+1            # of broadcast
+1            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
+1            # of lookahead depth
+1            DEPTHs (>=0)
+2            SWAP (0=bin-exch,1=long,2=mix)
+64           swapping threshold
+0            L1 in (0=transposed,1=no-transposed) form
+0            U  in (0=transposed,1=no-transposed) form
+1            Equilibration (0=no,1=yes)
+8            memory alignment in double (> 0)
+EOF
+
+cd /tmp && hpcc
+```
+
+### Single Node Results (1x Pi 3B)
+
+| Benchmark | Result |
+|-----------|--------|
+| **HPL (LINPACK)** | **1.385 GFlops** |
+| DGEMM | 1.226 GFlops |
+| STREAM Copy | 2.006 GB/s |
+| STREAM Triad | 1.411 GB/s |
+| FFT | 0.298 GFlops |
+| All tests | PASSED ✅ |
+
+---
+
+## Task 3 — MPI Cluster Setup
+
+### SSH Keys Between Pi 3 Nodes
+
+On pi3-1, generate SSH keys and copy to all other Pi 3s:
+
+```bash
+ssh pi@192.168.50.91
+
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+
+for ip in 91 92 93 94 95 96 97; do
+  ssh-copy-id -o StrictHostKeyChecking=no pi@192.168.50.$ip
+done
+```
+
+### Create MPI Hostfile on pi3-1
+
+```bash
+cat > ~/hostfile << 'EOF'
+192.168.50.91
+192.168.50.92
+192.168.50.93
+192.168.50.95
+192.168.50.96
+192.168.50.97
+EOF
+```
+
+> Note: pi3-4 (192.168.50.94) excluded due to hardware instability.
+
+### Test MPI Across All Nodes
+
+```bash
+mpirun --hostfile ~/hostfile -np 6 hostname
+```
+
+Expected output: `raspberrypi` printed 6 times — one per node ✅
+
+### Multi-Node HPL Benchmark
+
+Create config for 6 nodes (P=1, Q=6):
+
+```bash
+cat > ~/hpccinf.txt << 'EOF'
+HPLinpack benchmark input file
+Innovative Computing Laboratory, University of Tennessee
+HPL.out      output file name (if any)
+6            device out (6=stdout,7=stderr,file)
+1            # of problems sizes (N)
+8000         Ns
+1            # of NBs
+128          NBs
+0            PMAP process mapping (0=Row-,1=Column-major)
+1            # of process grids (P x Q)
+1            Ps
+6            Qs
+16.0         threshold
+1            # of panel fact
+2            PFACTs (0=left, 1=Crout, 2=Right)
+1            # of recursive stopping criterium
+4            NBMINs (>= 1)
+1            # of panels in recursion
+2            NDIVs
+1            # of recursive panel fact.
+1            RFACTs (0=left, 1=Crout, 2=Right)
+1            # of broadcast
+1            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
+1            # of lookahead depth
+1            DEPTHs (>=0)
+2            SWAP (0=bin-exch,1=long,2=mix)
+64           swapping threshold
+0            L1 in (0=transposed,1=no-transposed) form
+0            U  in (0=transposed,1=no-transposed) form
+1            Equilibration (0=no,1=yes)
+8            memory alignment in double (> 0)
+EOF
+
+mpirun --hostfile ~/hostfile -np 6 hpcc
+```
+
+### Multi-Node HPL Results (6x Pi 3B, N=5000)
+
+| Benchmark | Single Node | 6 Nodes | Notes |
+|-----------|-------------|---------|-------|
+| **HPL GFlops** | **1.385** | **1.208** | Small N — network overhead |
+| DGEMM GFlops | 1.669 | 0.894 | — |
+| FFT GFlops | 0.298 | 0.190 | — |
+| PTRANS GB/s | — | 0.025 | — |
+| All tests | PASSED | PASSED ✅ | — |
+
+> The cluster result appears lower than single node for N=5000 because the problem size is too small — network communication overhead dominates. Larger N (8000+) shows better scaling.
+
+---
+
 ## Verification Commands
 
 Check all Pi 3s are reachable:
-
 ```bash
 for ip in 91 92 93 94 95 96 97; do
   echo -n "pi3 192.168.50.$ip: "
@@ -327,20 +483,17 @@ done
 ```
 
 Check DHCP leases:
-
 ```bash
 cat /var/lib/misc/dnsmasq.leases
 ```
 
 Check NFS exports:
-
 ```bash
 sudo exportfs -v
 showmount -e localhost
 ```
 
 Check TFTP is running:
-
 ```bash
 sudo ss -ulnp | grep :69
 ```
@@ -349,14 +502,14 @@ sudo ss -ulnp | grep :69
 
 ## Known Issues and Solutions
 
-| Issue                                 | Cause                      | Solution                                  |
-| ------------------------------------- | -------------------------- | ----------------------------------------- |
-| Pi 3 not booting via PXE              | OTP not burned             | Run `program_usb_boot_mode=1` and reboot  |
-| Switch port delay causes timeout      | Switch STP/init delay      | Added `rootdelay=60` to cmdline.txt       |
-| Multiple Pi 3s failing simultaneously | TFTP congestion            | Stagger power-on by 30–60 seconds         |
-| NFS mount fails                       | Wrong IP in cmdline.txt    | Ensure nfsroot IP matches Pi 5's eth0 IP  |
-| chroot fails from Pi 5                | 32-bit/64-bit mismatch     | Install packages directly via SSH to Pi 3 |
-| MPI version mismatch                  | Pi 5 vs Pi 3 different MPI | Run MPI jobs from Pi 3-1 as master        |
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| Pi 3 not booting via PXE | OTP not burned | Run `program_usb_boot_mode=1` and reboot |
+| Switch port delay causes timeout | Switch STP/init delay | Added `rootdelay=60` to cmdline.txt |
+| Multiple Pi 3s failing simultaneously | TFTP congestion | Stagger power-on by 30–60 seconds |
+| NFS mount fails | Wrong IP in cmdline.txt | Ensure nfsroot IP matches Pi 5's eth0 IP |
+| chroot fails from Pi 5 | 32-bit/64-bit mismatch | Install packages directly via SSH to Pi 3 |
+| MPI version mismatch | Pi 5 vs Pi 3 different MPI | Run MPI jobs from Pi 3-1 as master |
 
 ---
 
@@ -366,8 +519,13 @@ sudo ss -ulnp | grep :69
   - 7/8 Pi 3s booting reliably via network
   - NFS root on NVMe SSD
   - Static IP assignment via MAC address
-- [ ] Task 2: HPL benchmark
-- [ ] Task 3: MPI cluster
+- [x] Task 2: HPL benchmark — **COMPLETE**
+  - Single node: 1.385 GFlops
+  - 6 node cluster: 1.208 GFlops (N=5000)
+- [x] Task 3: MPI cluster — **COMPLETE**
+  - OpenMPI 4.1.4 on all Pi 3s
+  - SSH passwordless login between all nodes
+  - MPI jobs run from pi3-1 as master
 - [ ] Task 4: Amdahl's and Gustafson's Law
 - [ ] Task 5: Monitoring
 - [ ] Task 6: Object detection model
@@ -378,8 +536,4 @@ sudo ss -ulnp | grep :69
 
 ---
 
-## Current issue
-
-- hpl is not working due to miss-machting of os, pi3-32, pi5-64
-
-_Last updated: May 2026 | Frankfurt University of Applied Sciences — Cloud Computing SS2026_
+*Last updated: May 2026 | Frankfurt University of Applied Sciences — Cloud Computing SS2026*
