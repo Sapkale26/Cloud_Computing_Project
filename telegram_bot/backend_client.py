@@ -8,10 +8,14 @@ def get_devices():
         response.raise_for_status()
         return response.json()
     except requests.RequestException:
-        return[        #Esto es solamente una simulacion hasta que tengamos el backend hecho, una vez tengamos el backend
-                       #hecho, devolvera el primer return que tenemos antes de levantar la excepcion
+        return [        #This is only a simulation of how the data would look like
             {
-                "deviceId": "raspberry_master",
+                "deviceId": "raspberry_master1",
+                "status": "online",
+                "role": "master"
+            },
+            {
+                "deviceId": "raspberry_master2",
                 "status": "online",
                 "role": "master"
             },
@@ -32,6 +36,21 @@ def get_devices():
             },
             {
                 "deviceId": "raspberry_4",
+                "status": "pending",
+                "role": "worker"
+            },
+            {
+                "deviceId": "raspberry_5",
+                "status": "pending",
+                "role": "worker"
+            },
+            {
+                "deviceId": "raspberry_6",
+                "status": "pending",
+                "role": "worker"
+            },
+            {
+                "deviceId": "raspberry_7",
                 "status": "pending",
                 "role": "worker"
             }
