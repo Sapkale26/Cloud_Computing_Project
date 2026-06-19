@@ -1,30 +1,45 @@
+require("dotenv").config();
+
 const express = require("express");
+const pool = require("./db");
 
 const app = express();
 
 app.use(express.json());
 
-let events = [];
-
 app.get("/", (req, res) => {
-    res.send("Backend Running");
+  res.send("Backend connected to PostgreSQL");
 });
 
-app.post("/events", (req, res) => {
+app.post("/events", async (req, res) => {
+  try {
+    const { event_type, location, image_url } = req.body;
 
-    console.log(req.body);
+    const result = await pool.query(
+      "INSERT INTO events (event_type, location, image_url) VALUES ($1, $2, $3) RETURNING *",
+      [event_type, location, image_url]
+    );
 
-    events.push(req.body);
-
-    res.send("Event Added");
+    res.json({
+      message: "Event added successfully",
+      event: result.rows[0],
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
-app.get("/events", (req, res) => {
-
-    res.json(events);
-
+app.get("/events", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM events ORDER BY created_at DESC");
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
 app.listen(3000, () => {
-    console.log("Server started!");
+  console.log("Server started on port 3000");
 });
