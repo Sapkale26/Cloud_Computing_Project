@@ -103,7 +103,7 @@ def get_latest_detection():
             )
 
 def get_alerts():
-    return _get("api/alerts",{
+    return _get("/api/alerts",{
         "alerts":[
             {
                 "id":42,
