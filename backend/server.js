@@ -69,7 +69,7 @@ app.get("/api/cluster/nodes", (req, res) => {
   });
 });
 
-app.get("/api/detection/latest", (req, res) => {
+app.get("/api/detections/latest", (req, res) => {
   res.redirect("/api/detections/latest");
 });
 
@@ -114,7 +114,7 @@ app.get("/api/stats", (req, res) => {
 });
 
 
-app.get("/api/detection/latest", (req, res) => {
+app.get("/api/detections/latest", (req, res) => {
   res.json({
     id: 42,
     timestamp: "2026-06-16T14:30:00.000Z",
@@ -128,55 +128,7 @@ app.get("/api/detection/latest", (req, res) => {
   });
 });
 
-app.get("/api/devices", (req, res) => {
-  res.json([
-    {
-      deviceId: "raspberry_master1",
-      status: "online",
-      role: "master",
-    },
-    {
-      deviceId: "raspberry_master2",
-      status: "online",
-      role: "master",
-    },
-    {
-      deviceId: "raspberry_1",
-      status: "pending",
-      role: "camera",
-    },
-    {
-      deviceId: "raspberry_2",
-      status: "pending",
-      role: "sensor",
-    },
-    {
-      deviceId: "raspberry_3",
-      status: "pending",
-      role: "worker",
-    },
-    {
-      deviceId: "raspberry_4",
-      status: "pending",
-      role: "worker",
-    },
-    {
-      deviceId: "raspberry_5",
-      status: "pending",
-      role: "worker",
-    },
-    {
-      deviceId: "raspberry_6",
-      status: "pending",
-      role: "worker",
-    },
-    {
-      deviceId: "raspberry_7",
-      status: "pending",
-      role: "worker",
-    },
-  ]);
-});
+
 
 // ====================================================
 // GET ALL DETECTIONS
