@@ -178,6 +178,67 @@ app.get("/api/devices", (req, res) => {
   ]);
 });
 
+// ====================================================
+// GET ALL DETECTIONS
+// ====================================================
+
+app.get("/api/detections", (req, res) => {
+  res.json({
+    detections: [
+      {
+        id: 42,
+        timestamp: new Date().toISOString(),
+        type: "person",
+        threat: false,
+        confidence: 0.95,
+        count: 3,
+        location: "Zone A",
+        classes: ["person", "smoke"],
+        image_url: "http://localhost:9000/detections/detection_42.jpg"
+      },
+      {
+        id: 41,
+        timestamp: new Date().toISOString(),
+        type: "knife",
+        threat: true,
+        confidence: 0.87,
+        count: 1,
+        location: "Zone B",
+        classes: ["knife"],
+        image_url: "http://localhost:9000/detections/detection_41.jpg"
+      }
+    ]
+  });
+});
+
+
+// ====================================================
+// POST DETECTION
+// ====================================================
+
+app.post("/api/detections", (req, res) => {
+  console.log("Detection received:", req.body);
+
+  res.json({
+    success: true,
+    id: Date.now()
+  });
+});
+
+
+// ====================================================
+// PREPROCESS ENDPOINT
+// ====================================================
+
+app.post("/api/preprocess", (req, res) => {
+  const { image_base64 } = req.body;
+
+  res.json({
+    success: true,
+    image_base64
+  });
+});
+
 
 app.listen(3000, () => {
   console.log("Server started on port 3000");
