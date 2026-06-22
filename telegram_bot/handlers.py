@@ -29,7 +29,7 @@ def format_time(timestamp: str) ->str:
         return "unknown"
     try:
         clean_timestamp=timestamp.replace("Z","+00:00")
-        dt=datetime.fromisofromat(clean_timestamp)
+        dt=datetime.fromisoformat(clean_timestamp)
         return dt.strftime("%H:%M:%S")
     except ValueError:
         return timestamp
