@@ -13,6 +13,25 @@ The backend is a **Node.js REST API** that:
 
 ---
 
+---
+
+## Architecture
+
+The backend acts as the central communication layer between the edge devices, storage, frontend dashboard, and Telegram bot.
+
+```text
+Pi 4 YOLO Camera
+        ↓
+Backend API (Node.js + Express)
+        ↓
+PostgreSQL Database / MinIO Storage
+        ↓
+Frontend Dashboard
+
+Telegram Bot
+        ↓
+Backend API
+
 ## Tech Stack & Packages
 
 | Package | Purpose | Install |
@@ -25,6 +44,23 @@ The backend is a **Node.js REST API** that:
 ---
 
 ## API Endpoints
+
+
+### Endpoint Summary
+
+| Method | Endpoint | Purpose | Consumer |
+| ------ | -------- | ------- | -------- |
+| POST | `/api/detections` | Receive detection event from YOLO camera | Pi 4 |
+| GET | `/api/detections` | Return recent detections | Frontend |
+| GET | `/api/detections/latest` | Return latest detection | Frontend / Telegram |
+| GET | `/api/detection/latest` | Compatibility endpoint for Telegram bot | Telegram |
+| GET | `/api/cluster/nodes` | Return cluster node status | Frontend / Telegram |
+| GET | `/api/stats` | Return detection statistics | Frontend / Telegram |
+| GET | `/api/alerts` | Return recent alerts | Frontend / Telegram |
+| GET | `/api/devices` | Return simulated device list | Telegram |
+| POST | `/api/preprocess` | Receive image preprocessing request | Pi 4 / Backend |
+| GET | `/api/health` | Return backend health status | Monitoring |
+
 
 ### 1. POST /api/detections
 **Called by:** Pi 4 YOLO detection script  
