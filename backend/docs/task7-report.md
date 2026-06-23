@@ -51,6 +51,45 @@ According to the current team progress report, the k3s cluster is operational an
 
 Distributed preprocessing is operational in a partial form. The current solution works, but processing time is still high because SSH and file transfer overhead add significant delay. Further optimization is needed before this can be considered real-time.
 
+
+## Task 7 Part A – Final Backend Implementation Status
+
+Task 7 Part A is completed. The backend was connected to PostgreSQL and updated to return real database records where available, with fallback data used only when database data is unavailable.
+
+Implemented backend features:
+
+- PostgreSQL database integration
+- Detection event storage
+- Alert storage and retrieval
+- Cluster node status retrieval
+- Statistics endpoint using stored database values
+- Health check endpoint
+- Test scripts for posting detection and node status data
+
+The following backend endpoints were implemented and tested:
+
+- `POST /api/detections`
+- `GET /api/detections`
+- `GET /api/detections/latest`
+- `GET /api/alerts`
+- `GET /api/stats`
+- `GET /api/cluster/nodes`
+- `GET /api/health`
+
+Telegram bot integration was also completed. The bot now retrieves backend data and displays it using the following commands:
+
+- `/status`
+- `/latest`
+- `/alerts`
+- `/stats`
+- `/myid`
+
+Testing confirmed that data inserted through backend scripts is stored in PostgreSQL and correctly displayed through the Telegram bot.
+
+The image display flow was also tested successfully using an external image URL. The real YOLO image pipeline is left for later because the Raspberry Pi YOLO detection script is not currently available in this repository.
+
+Overall, Task 7 Part A backend implementation and Telegram integration are complete.
+
 ### Lead
 
 Janak, with backend API support from Purvesh Shapariya.
