@@ -220,3 +220,8 @@ __marimo__/
 
 node_modules/
 .env
+detection_service/runs/
+detection_service/logs/
+detection_service/images/output/
+detection_service/yolov8n.pt
+backend/last40.txt

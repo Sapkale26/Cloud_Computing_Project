@@ -138,9 +138,8 @@ app.get("/api/cluster/nodes", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-app.get("/api/detections/latest", (req, res) => {
-=======
+
+
 // -------------------- DEVICES --------------------
 
 app.get("/api/devices", (req, res) => {
@@ -247,7 +246,7 @@ app.get("/api/detections/latest", async (req, res) => {
 
 // Compatibility endpoint for Telegram typo/singular route
 app.get("/api/detection/latest", (req, res) => {
->>>>>>> de158bd (Task 7A: backend monitoring APIs and Telegram bot integration)
+
   res.redirect("/api/detections/latest");
 });
 

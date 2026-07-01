@@ -1,3 +1,4 @@
+from app.api_client import send_detection
 from ultralytics import YOLO
 from datetime import datetime
 import json
@@ -38,3 +39,17 @@ with open("logs/metadata/detection.json", "w") as file:
 
 print("Metadata generated successfully.")
 print(f"Detected objects: {len(metadata)}")
+with open("logs/metadata/detection.json", "r") as f:
+    detections = json.load(f)
+
+payload = {
+    "type": "object_detection",
+    "threat": False,
+    "confidence": detections[0]["confidence"] if detections else 0,
+    "count": len(detections),
+    "location": "sensor-node-pi4",
+    "classes": [d["object_class"] for d in detections],
+    "image_url": detections[0]["image_path"] if detections else ""
+}
+
+send_detection(payload)
