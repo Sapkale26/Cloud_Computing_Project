@@ -114,6 +114,44 @@ app.get("/api/cluster/nodes", async (req, res) => {
   }
 });
 
+app.post("/api/cluster/nodes", async (req, res) => {
+  try {
+    const {
+      name,
+      role,
+      status,
+      cpu_percent,
+      memory_percent,
+      temperature,
+      uptime
+    } = req.body;
+
+    const result = await pool.query(
+      `INSERT INTO cluster_nodes
+       (name, role, status, cpu_percent, memory_percent, temperature, uptime)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING *`,
+      [
+        name,
+        role,
+        status,
+        cpu_percent,
+        memory_percent,
+        temperature,
+        uptime
+      ]
+    );
+
+    res.json({
+      success: true,
+      node: result.rows[0]
+    });
+  } catch (error) {
+    console.error("POST /api/cluster/nodes error:", error);
+    res.status(500).json({ success: false, error: "Database error" });
+  }
+});
+
 app.get("/api/devices", (req, res) => {
   res.json(fallbackDevices);
 });
