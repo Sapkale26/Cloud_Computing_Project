@@ -129,6 +129,7 @@ The backend SSHs into each Pi node on demand using node-ssh to collect CPU usage
 **Lead:** Janak / Purvesh
 
 ---
+
 ## Task 7 (Part B) — Detection Service and Backend Integration
 
 **Approach and Solution:**
@@ -150,6 +151,7 @@ Another challenge was configuring PostgreSQL connectivity between the Detection 
 **COMPLETE.** Detection Service successfully integrated with the Node.js backend. Detection metadata is transmitted through the REST API and stored in PostgreSQL. Backend health endpoint verified, end-to-end Detection Service → Backend → PostgreSQL workflow successfully tested, and complete Phase 1–5 technical documentation prepared and pushed to the `feature/task7b-detection-service` branch.
 
 **Lead:** Shubhangi
+
 ---
 
 ## Task 7 (Part C) — Kubernetes Cluster and Distributed Preprocessing
