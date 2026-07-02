@@ -8,8 +8,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json({ limit: "10mb" }));
 
-// -------------------- FALLBACK DATA --------------------
-
 const fallbackNodes = {
   nodes: [
     {
@@ -45,19 +43,6 @@ const fallbackLatestDetection = {
   image_url: "http://192.168.50.1:9000/detections/detection_42.jpg"
 };
 
-const fallbackAlerts = {
-  alerts: [
-    {
-      id: 41,
-      timestamp: "2026-06-16T14:29:58.000Z",
-      severity: "high",
-      message: "Threat at Zone B (knife)",
-      acknowledged: false,
-      image_url: "http://192.168.50.1:9000/detections/detection_41.jpg"
-    }
-  ]
-};
-
 const fallbackStats = {
   total_detections_today: 142,
   total_people_detected: 139,
@@ -79,13 +64,9 @@ const fallbackDevices = [
   { deviceId: "raspberry_7", status: "pending", role: "worker" }
 ];
 
-// -------------------- ROOT --------------------
-
 app.get("/", (req, res) => {
   res.send("Backend connected to PostgreSQL");
 });
-
-// -------------------- OLD EVENTS ROUTES --------------------
 
 app.post("/events", async (req, res) => {
   try {
@@ -108,18 +89,13 @@ app.post("/events", async (req, res) => {
 
 app.get("/events", async (req, res) => {
   try {
-    const result = await pool.query(
-      "SELECT * FROM events ORDER BY created_at DESC"
-    );
-
+    const result = await pool.query("SELECT * FROM events ORDER BY created_at DESC");
     res.json(result.rows);
   } catch (error) {
     console.error("GET /events error:", error);
     res.status(500).json({ error: "Database error" });
   }
 });
-
-// -------------------- CLUSTER NODES --------------------
 
 app.get("/api/cluster/nodes", async (req, res) => {
   try {
@@ -138,16 +114,9 @@ app.get("/api/cluster/nodes", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-app.get("/api/detections/latest", (req, res) => {
-=======
-// -------------------- DEVICES --------------------
-
 app.get("/api/devices", (req, res) => {
   res.json(fallbackDevices);
 });
-
-// -------------------- DETECTIONS --------------------
 
 app.post("/api/detections", async (req, res) => {
   try {
@@ -245,30 +214,23 @@ app.get("/api/detections/latest", async (req, res) => {
   }
 });
 
-// Compatibility endpoint for Telegram typo/singular route
 app.get("/api/detection/latest", (req, res) => {
->>>>>>> de158bd (Task 7A: backend monitoring APIs and Telegram bot integration)
   res.redirect("/api/detections/latest");
 });
 
-// -------------------- ALERTS --------------------
-
 app.get("/api/alerts", async (req, res) => {
   try {
-    const result = await pool.query(`
-      SELECT *
-      FROM alerts
-      ORDER BY created_at DESC
-    `);
+    const result = await pool.query(
+      "SELECT * FROM alerts ORDER BY created_at DESC"
+    );
 
-    res.json({
+    return res.json({
       alerts: result.rows
     });
-
   } catch (error) {
-    console.error(error);
+    console.error("GET /api/alerts DB fallback:", error.message);
 
-    res.json({
+    return res.json({
       alerts: [
         {
           id: 41,
@@ -282,8 +244,6 @@ app.get("/api/alerts", async (req, res) => {
     });
   }
 });
-
-// -------------------- STATS --------------------
 
 app.get("/api/stats", async (req, res) => {
   try {
@@ -337,8 +297,6 @@ app.get("/api/stats", async (req, res) => {
   }
 });
 
-// -------------------- PREPROCESS --------------------
-
 app.post("/api/preprocess", (req, res) => {
   const { image_base64 } = req.body;
 
@@ -348,8 +306,6 @@ app.post("/api/preprocess", (req, res) => {
   });
 });
 
-// -------------------- HEALTH --------------------
-
 app.get("/api/health", (req, res) => {
   res.json({
     status: "healthy",
@@ -357,8 +313,6 @@ app.get("/api/health", (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
-
-// -------------------- SERVER --------------------
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
