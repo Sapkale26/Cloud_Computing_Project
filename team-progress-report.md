@@ -8,14 +8,14 @@
 
 ## Team Members
 
-| Member   | Role                                                                |
-| -------  | ------------------------------------------------------------------- |
-| Janak    | Infrastructure Lead (PXE Boot, MPI, Kubernetes, Distributed System) |
-| Purvesh  | Backend Developer (Node.js API)                                     |
-| Disha    | Object Detection (YOLO Model Training)                              |
-| Marcos   | Telegram Bot                                                        |
-| Disha    | Frontend Developer (React Dashboard)                                |
-| Shubhangi| Detection Service & Backend Integration Developer                   |
+| Member        | Role                                                                |
+| -------       | ------------------------------------------------------------------- |
+| Janak         | Infrastructure Lead (PXE Boot, MPI, Kubernetes, Distributed System) |
+| Purvesh       | Backend Developer (Node.js API)                                     |
+| Disha         | Object Detection (YOLO Model Training)                              |
+| Marcos        | Telegram Bot                                                        |
+| Disha & Amina | Frontend Developer (React Dashboard)                                |
+| Shubhangi     | Detection Service & Backend Integration Developer                   |
 
 ---
 
