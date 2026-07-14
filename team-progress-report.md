@@ -8,13 +8,14 @@
 
 ## Team Members
 
-| Member  | Role                                                                |
-| ------- | ------------------------------------------------------------------- |
-| Janak   | Infrastructure Lead (PXE Boot, MPI, Kubernetes, Distributed System) |
-| Purvesh | Backend Developer (Node.js API)                                     |
-| Disha   | Object Detection (YOLO Model Training)                              |
-| Marcos  | Telegram Bot                                                        |
-| Disha   | Frontend Developer (React Dashboard)                                |
+| Member        | Role                                                                |
+| -------       | ------------------------------------------------------------------- |
+| Janak         | Infrastructure Lead (PXE Boot, MPI, Kubernetes, Distributed System) |
+| Purvesh       | Backend Developer (Node.js API)                                     |
+| Disha         | Object Detection (YOLO Model Training)                              |
+| Marcos        | Telegram Bot                                                        |
+| Disha & Amina | Frontend Developer (React Dashboard)                                |
+| Shubhangi     | Detection Service & Backend Integration Developer                   |
 
 ---
 
@@ -128,7 +129,31 @@ The backend SSHs into each Pi node on demand using node-ssh to collect CPU usage
 
 ---
 
-## Task 7 (Part B) — Kubernetes Cluster and Distributed Preprocessing
+## Task 7 (Part B) — Detection Service and Backend Integration
+
+**Approach and Solution:**
+
+We developed a Python-based Detection Service using **YOLOv8** to perform object detection on images captured by the Raspberry Pi sensor node. The Detection Service loads the trained YOLO model, processes input images, performs inference, and extracts detection results including detected object classes, confidence scores, object count, threat status, timestamp, and image path. The generated detection metadata is formatted as JSON and transmitted to the existing Node.js backend through the `POST /api/detections` REST API endpoint.
+
+The Detection Service was integrated with the backend by configuring the backend environment and PostgreSQL database connection. The required PostgreSQL database and tables were created and verified before testing. End-to-end integration was validated by executing the complete workflow from **Detection Service → Backend → PostgreSQL**. Backend availability was verified using the `/api/health` endpoint, while SQL queries confirmed that detection records were successfully stored in the database. Complete technical documentation was prepared covering project setup, dependency installation, YOLO detection, metadata generation, backend integration, testing, and verification. All implementation code and documentation were committed and pushed to the `feature/task7b-detection-service` branch for review and integration.
+
+**Problems Faced:**
+
+The first major challenge was resolving Git merge conflicts in `server.js`. During backend integration, conflicting changes from multiple contributors left Git merge markers (`<<<<<<<`, `=======`, `>>>>>>>`) in the source code, preventing the backend from starting successfully. The conflicts were manually reviewed, the correct implementation was reconstructed, and the backend was tested to ensure all REST API endpoints functioned correctly.
+
+The second challenge was setting up the Detection Service environment. Several required Python packages, including **Ultralytics YOLO**, **OpenCV**, **Requests**, **Pillow**, **NumPy**, and **python-dotenv**, were initially missing from the virtual environment. Some project files also required verification before the Detection Service could execute successfully. After installing the required dependencies and validating the project structure, the Detection Service operated correctly.
+
+Another challenge was configuring PostgreSQL connectivity between the Detection Service and the backend. Initially, the backend failed to establish a database connection because of incorrect authentication settings and missing environment configuration. The required `.env` file was configured, the PostgreSQL database schema was initialized, backend connectivity was verified, and successful communication between the Detection Service and backend was established. End-to-end testing confirmed successful REST API communication, **HTTP Status 200** responses, and correct storage of detection metadata in PostgreSQL.
+
+**Current Status:**
+
+**COMPLETE.** Detection Service successfully integrated with the Node.js backend. Detection metadata is transmitted through the REST API and stored in PostgreSQL. Backend health endpoint verified, end-to-end **Detection Service → Backend → PostgreSQL** workflow successfully tested, and complete Phase 1–5 technical documentation prepared and pushed to the `feature/task7b-detection-service` branch.
+
+**Lead:** Shubhangi
+
+---
+
+## Task 7 (Part C) — Kubernetes Cluster and Distributed Preprocessing
 
 **Approach and Solution:**
 We installed k3s (lightweight Kubernetes) on Pi 5 as the control plane and joined 5 Pi 3 worker nodes. Both frontend and backend are containerized with Docker and deployed as Kubernetes Deployments with NodePort Services.
@@ -194,7 +219,8 @@ We maintain a detailed living documentation (pi-cluster-setup.md) recording ever
 | 5    | Monitoring (Prometheus/Grafana)        | 📋 Planned            | janak           |
 | 6    | Object Detection (YOLO)                | ✅ Complete           | Disha           |
 | 7A   | Backend + MinIO Storage                | ✅ Complete           | Purvesh / Janak |
-| 7B   | Kubernetes + Distributed Preprocessing | ✅ Complete (partial) | Janak           |
+| 7B   | Detection Service & Backend Integration| ✅ Complete           | Shubhangi       |
+| 7C   | Kubernetes + Distributed Preprocessing | ✅ Complete (partial) | Janak           |
 | 8    | Frontend Dashboard                     | ✅ Complete           | Disha / Janak   |
 | 9    | Telegram Bot                           | 📋 Planned            | Marcos          |
 | 10   | Documentation                          | 🔄 In Progress        | All             |
