@@ -29,7 +29,7 @@ def format_time(timestamp: str) ->str:
         return "unknown"
     try:
         clean_timestamp=timestamp.replace("Z","+00:00")
-        dt=datetime.fromisofromat(clean_timestamp)
+        dt = datetime.fromisoformat(clean_timestamp)
         return dt.strftime("%H:%M:%S")
     except ValueError:
         return timestamp
@@ -86,8 +86,8 @@ async def status(update: Update, context: ContextTypes.DEFAULT_TYPE):
         name=node.get("name", "unknown")
         role=node.get("role","unknown")
         status_value=node.get("status", "unknown")
-        cpu=node.get("cpu","unknown")
-        memory=node.get("memory", "unknown")
+        cpu=node.get("cpu_percent","unknown")
+        memory=node.get("memory_percent", "unknown")
         temperature = node.get("temperature","unknown")
         
         if status_value.lower() in ["ready", "online"]:
@@ -177,7 +177,7 @@ async def stats(update: Update, context:ContextTypes.DEFAULT_TYPE):
     
     
 async def unknown_command(update: Update, context:ContextTypes.DEFAULT_TYPE):
-    if await reject_if_unauthorized():
+    if await reject_if_unauthorized(update):
         return
     
     await update.message.reply_text(

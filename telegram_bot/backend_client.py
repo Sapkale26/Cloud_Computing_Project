@@ -88,7 +88,7 @@ def get_cluster_nodes():
                 )
     
 def get_latest_detection():
-    return _get("/api/detection/latest",
+    return _get("/api/detections/latest",
                     {
                         "id": 42,
                         "timestamp": "2026-06-16T14:30:00.000Z",
