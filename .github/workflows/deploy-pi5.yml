@@ -1,0 +1,58 @@
+name: Deploy to Pi 5
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'services/**'
+      - 'infrastructure/kubernetes/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy backend to Pi 5
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PI5_HOST }}
+          username: pi
+          password: ${{ secrets.PI5_PASSWORD }}
+          script: |
+            cd ~/cluster
+            git pull origin main
+            
+            # Restart backend
+            pkill -f "node.*server.js" || true
+            sleep 1
+            node ~/cluster/services/backend/src/server.js > /mnt/nvme/logs/backend.log 2>&1 &
+            echo "Backend restarted ✅"
+
+      - name: Rebuild and deploy frontend
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PI5_HOST }}
+          username: pi
+          password: ${{ secrets.PI5_PASSWORD }}
+          script: |
+            cd ~/cluster/services/frontend
+            npm install --silent
+            npm run build
+            sudo docker build -t frontend:latest .
+            sudo docker save frontend:latest | sudo k3s ctr images import -
+            sudo kubectl rollout restart deployment/frontend
+            echo "Frontend deployed ✅"
+
+      - name: Health check
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PI5_HOST }}
+          username: pi
+          password: ${{ secrets.PI5_PASSWORD }}
+          script: |
+            sleep 5
+            curl -sf http://localhost:5000/api/stats && echo "Backend OK ✅" || echo "Backend FAILED ❌"
+            curl -sf http://localhost:30080 && echo "Frontend OK ✅" || echo "Frontend FAILED ❌"

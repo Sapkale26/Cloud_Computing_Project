@@ -1,0 +1,132 @@
+---
+# ============================================================
+# setup-all.yml
+# Configure all cluster nodes
+# Usage: ansible-playbook -i inventory.yml playbooks/setup-all.yml
+# ============================================================
+
+- name: Setup Pi 3 Worker Nodes
+  hosts: workers
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install required packages
+      apt:
+        name:
+          - python3-pip
+          - openmpi-bin
+          - libopenmpi-dev
+          - gcc
+          - make
+        state: present
+
+    - name: Install OpenCV headless
+      pip:
+        name: opencv-python-headless
+        extra_args: --break-system-packages
+        executable: pip3
+
+    - name: Copy node_exporter binary
+      copy:
+        src: /usr/local/bin/node_exporter
+        dest: /usr/local/bin/node_exporter
+        mode: '0755'
+
+    - name: Create node_exporter systemd service
+      copy:
+        dest: /etc/systemd/system/node_exporter.service
+        content: |
+          [Unit]
+          Description=Node Exporter
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/local/bin/node_exporter
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Enable and start node_exporter
+      systemd:
+        name: node_exporter
+        enabled: yes
+        state: started
+        daemon_reload: yes
+
+    - name: Copy preprocess_worker.py
+      copy:
+        src: ../../../services/pi3-preprocessing/worker.py
+        dest: ~/preprocess_worker.py
+        mode: '0755'
+
+    - name: Copy MPI binary
+      copy:
+        src: /home/pi/pi_mpi
+        dest: /home/pi/pi_mpi
+        mode: '0755'
+      ignore_errors: yes
+
+- name: Setup Pi 4 Camera Node
+  hosts: camera
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install camera dependencies
+      apt:
+        name:
+          - python3-pip
+          - python3-picamera2
+          - libcamera-apps
+        state: present
+
+    - name: Install Python packages
+      pip:
+        name:
+          - pyzmq
+          - opencv-python-headless
+          - requests
+        extra_args: --break-system-packages
+        executable: pip3
+
+    - name: Copy node_exporter binary
+      copy:
+        src: /usr/local/bin/node_exporter
+        dest: /usr/local/bin/node_exporter
+        mode: '0755'
+
+    - name: Create node_exporter systemd service
+      copy:
+        dest: /etc/systemd/system/node_exporter.service
+        content: |
+          [Unit]
+          Description=Node Exporter
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/local/bin/node_exporter
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Enable and start node_exporter
+      systemd:
+        name: node_exporter
+        enabled: yes
+        state: started
+        daemon_reload: yes
+
+    - name: Copy sender.py
+      copy:
+        src: ../../../services/pi4-camera/sender.py
+        dest: ~/sender.py
+        mode: '0755'
