@@ -94,7 +94,8 @@ if lsblk | grep -q sda; then
     fi
     # Add to fstab if not already there
     if ! grep -q "/dev/sda1" /etc/fstab; then
-        echo "/dev/sda1 /mnt/nvme ext4 defaults 0 2" | sudo tee -a /etc/fstab
+        # nofail = don't break boot if NVMe has issues
+        echo "/dev/sda1 /mnt/nvme ext4 defaults,nofail,x-systemd.device-timeout=10 0 0" | sudo tee -a /etc/fstab
     fi
     sudo mount /mnt/nvme 2>/dev/null || true
     sudo mkdir -p /mnt/nvme/{minio-data,prometheus-data,grafana-data,models,logs}
