@@ -1,0 +1,50 @@
+---
+all:
+  vars:
+    ansible_user: pi
+    ansible_ssh_pass: "1234"
+    ansible_become_pass: "1234"
+    ansible_python_interpreter: /usr/bin/python3
+
+  children:
+    master:
+      hosts:
+        pi5:
+          ansible_host: 192.168.50.1
+          ansible_user: pi
+
+    camera:
+      hosts:
+        pi4:
+          ansible_host: 192.168.50.98
+          ansible_user: pi
+
+    workers:
+      hosts:
+        pi3-1:
+          ansible_host: 192.168.50.91
+          ansible_user: pi3-1
+        pi3-2:
+          ansible_host: 192.168.50.92
+          ansible_user: pi3-2
+        pi3-3:
+          ansible_host: 192.168.50.93
+          ansible_user: pi3-3
+        pi3-4:
+          ansible_host: 192.168.50.94
+          ansible_user: pi3-4
+        pi3-5:
+          ansible_host: 192.168.50.95
+          ansible_user: pi3-5
+        pi3-6:
+          ansible_host: 192.168.50.96
+          ansible_user: pi3-6
+        pi3-7:
+          ansible_host: 192.168.50.97
+          ansible_user: pi3-7
+
+    cluster:
+      children:
+        master:
+        workers:
+        camera:
