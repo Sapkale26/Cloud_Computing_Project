@@ -66,15 +66,15 @@ We built a self-contained edge-computing cluster using commodity Raspberry Pi ha
 
 | Device | Username | Password |
 |--------|----------|---------|
-| Pi 5 | pi | <password> |
-| Pi 3-1 | pi3-1    | <password> |
-| Pi 3-2 | pi3-2    | <password> |
-| Pi 3-3 | pi3-3    | <password> |
-| Pi 3-4 | pi3-4    | <password> |
-| Pi 3-5 | pi3-5    | <password> |
-| Pi 3-6 | pi3-6    | <password> |
-| Pi 3-7 | pi3-7    | <password> |
-| Pi 4   | pi       | <password> |
+| Pi 5 | pi | <hidden> |
+| Pi 3-1 | pi3-1    | <hidden> |
+| Pi 3-2 | pi3-2    | <hidden> |
+| Pi 3-3 | pi3-3    | <hidden> |
+| Pi 3-4 | pi3-4    | <hidden> |
+| Pi 3-5 | pi3-5    | <hidden> |
+| Pi 3-6 | pi3-6    | <hidden> |
+| Pi 3-7 | pi3-7    | <hidden> |
+| Pi 4   | pi       | <hidden> |
 
 ---
 
