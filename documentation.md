@@ -66,15 +66,15 @@ We built a self-contained edge-computing cluster using commodity Raspberry Pi ha
 
 | Device | Username | Password |
 |--------|----------|---------|
-| Pi 5 | pi | 1234 |
-| Pi 3-1 | pi3-1 | 1234 |
-| Pi 3-2 | pi3-2 | 1234 |
-| Pi 3-3 | pi3-3 | 1234 |
-| Pi 3-4 | pi3-4 | 1234 |
-| Pi 3-5 | pi3-5 | 1234 |
-| Pi 3-6 | pi3-6 | 1234 |
-| Pi 3-7 | pi3-7 | 1234 |
-| Pi 4 | pi | 1234 |
+| Pi 5 | pi | <password> |
+| Pi 3-1 | pi3-1    | <password> |
+| Pi 3-2 | pi3-2    | <password> |
+| Pi 3-3 | pi3-3    | <password> |
+| Pi 3-4 | pi3-4    | <password> |
+| Pi 3-5 | pi3-5    | <password> |
+| Pi 3-6 | pi3-6    | <password> |
+| Pi 3-7 | pi3-7    | <password> |
+| Pi 4   | pi       | <password> |
 
 ---
 
@@ -138,7 +138,7 @@ SSH keys are distributed from Pi 5 to all Pi 3s:
 ```bash
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 for i in 1 2 3 4 5 6 7; do
-  sshpass -p '1234' ssh-copy-id -o StrictHostKeyChecking=no pi3-$i@192.168.50.$((90+i))
+  sshpass -p "$PI_PASSWORD" ssh-copy-id -o StrictHostKeyChecking=no pi3-$i@192.168.50.$((90+i))
 done
 ```
 
@@ -469,7 +469,7 @@ cd grafana-v11.1.0
 ./bin/grafana server &
 ```
 
-Access at: `http://192.168.50.1:3000` (admin/admin)
+Access at: `http://192.168.50.1:3000` (default admin/admin — change on first login)
 
 **CPU Usage Query for Grafana:**
 ```
@@ -751,12 +751,12 @@ MinIO provides S3-compatible object storage on the Pi 5 NVMe:
 
 ```bash
 # Start MinIO
-MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=admin123 \
+MINIO_ROOT_USER=$MINIO_ROOT_USER MINIO_ROOT_PASSWORD=$MINIO_ROOT_PASSWORD \
 minio server /mnt/nvme/minio-data --console-address ":9001" &
 ```
 
 - **API endpoint:** http://192.168.50.1:9000
-- **Web console:** http://192.168.50.1:9001 (admin/admin123)
+- **Web console:** http://192.168.50.1:9001 (credentials via $MINIO_ROOT_USER / $MINIO_ROOT_PASSWORD)
 - **Bucket:** `detections` (public)
 - **Auto-cleanup:** keeps last 100 images
 
@@ -855,7 +855,7 @@ python3 main.py &
 **Configuration (`~/telegram-bot/.env`):**
 ```
 TELEGRAM_BOT_TOKEN=<your_token>
-TELEGRAM_CHAT_ID=943023322
+TELEGRAM_CHAT_ID=<your_chat_id>
 BACKEND_URL=http://192.168.50.1:5000
 AUTHORIZED_USERS=
 ```
@@ -874,7 +874,7 @@ Run these commands on **Pi 5**:
 
 ```bash
 # 1. Start MinIO
-MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=admin123 \
+MINIO_ROOT_USER=$MINIO_ROOT_USER MINIO_ROOT_PASSWORD=$MINIO_ROOT_PASSWORD \
 minio server /mnt/nvme/minio-data --console-address ":9001" &
 
 # 2. Start Backend
