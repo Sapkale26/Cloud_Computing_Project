@@ -1,6 +1,7 @@
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
 from backend_client import get_alerts
-from config import TELEGRAM_BOT_TOKEN
+from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+from storage import load_sent_alert_ids, save_sent_alert_ids
 from handlers import (
     alerts,
     help_command,
@@ -11,8 +12,7 @@ from handlers import (
     stats,
     unknown_command,
 )
-from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
-sent_alert_ids = set()
+sent_alert_ids = load_sent_alert_ids()
 
 async def check_threats(context):
     """Background job: send Telegram alert for new threats every 30s"""
@@ -52,6 +52,7 @@ async def check_threats(context):
                     await context.bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=text)
 
                 sent_alert_ids.add(alert_id)
+                save_sent_alert_ids(sent_alert_ids)
                 print(f"Threat alert sent: {message}")
             except Exception as e:
                 print(f"Failed to send alert: {e}")
