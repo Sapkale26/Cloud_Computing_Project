@@ -1,70 +1,120 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { overflow-x: hidden; }
+/* ---------------------------------------------------------------------- */
+/* Design tokens                                                           */
+/* ---------------------------------------------------------------------- */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Surfaces */
+  --bg: #090c10;
+  --bg-surface: #0e131a;
+  --bg-card: #131a23;
+  --bg-card-hover: #172030;
+  --bg-inset: #0b0f15;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Borders */
+  --border: #212b38;
+  --border-strong: #2c3a4b;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Text */
+  --text-primary: #e8edf4;
+  --text-secondary: #8fa0b5;
+  --text-muted: #5a6b80;
+
+  /* Signal accent */
+  --accent-cyan: #2fd8c9;
+  --accent-cyan-dim: rgba(47, 216, 201, 0.14);
+  --accent-violet: #8b7dfb;
+  --accent-violet-dim: rgba(139, 125, 251, 0.14);
+
+  /* Status */
+  --status-good: #3ecb82;
+  --status-good-dim: rgba(62, 203, 130, 0.14);
+  --status-warn: #f2b33d;
+  --status-warn-dim: rgba(242, 179, 61, 0.14);
+  --status-bad: #f0525d;
+  --status-bad-dim: rgba(240, 82, 93, 0.14);
+
+  /* Type */
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  color-scheme: dark;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text-primary);
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-width: 320px;
+}
+
+#root {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input {
+  font-family: inherit;
+  color: inherit;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background: none;
+  border: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+::selection {
+  background: var(--accent-cyan-dim);
+  color: var(--text-primary);
+}
+
+/* Slim, unobtrusive scrollbars for the dense data panels */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
