@@ -1,55 +1,117 @@
-from app.api_client import send_detection
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
 from ultralytics import YOLO
-from datetime import datetime
-import json
 
-print("Loading YOLO model...")
-
-model = YOLO("yolov8n.pt")
-
-print("Running detection...")
-
-results = model.predict(
-    source="images/input/bus.jpg",
-    save=True,
-    project="images/output",
-    name="result",
-    conf=0.25
+from app.config import (
+    MODEL_PATH,
+    CONFIDENCE_THRESHOLD,
+    IOU_THRESHOLD,
+    IMAGE_SIZE,
+    DEVICE,
+    MAX_DETECTIONS,
+    THREAT_CLASSES,
+    SENSOR_NODE_ID,
 )
 
-metadata = []
 
-for result in results:
-    for box in result.boxes:
+class DetectionService:
+    """
+    YOLO-based object detection service.
 
-        class_id = int(box.cls[0])
-        class_name = model.names[class_id]
-        confidence = float(box.conf[0])
+    Responsibilities:
+    - Load and validate the custom YOLO model.
+    - Perform inference.
+    - Extract structured detections.
+    - Calculate threat status.
+    - Return normalized metadata.
+    """
 
-        metadata.append({
-            "timestamp": datetime.now().isoformat(),
-            "object_class": class_name,
-            "confidence": round(confidence, 4),
-            "sensor_node_id": "pi4-01",
-            "image_path": "images/output/result/bus.jpg"
-        })
+    def __init__(self) -> None:
 
-with open("logs/metadata/detection.json", "w") as file:
-    json.dump(metadata, file, indent=4)
+        if not MODEL_PATH.exists():
+            raise FileNotFoundError(
+                f"YOLO model not found: {MODEL_PATH}"
+            )
 
-print("Metadata generated successfully.")
-print(f"Detected objects: {len(metadata)}")
-with open("logs/metadata/detection.json", "r") as f:
-    detections = json.load(f)
+        if MODEL_PATH.stat().st_size == 0:
+            raise ValueError(
+                f"YOLO model is empty: {MODEL_PATH}"
+            )
 
-payload = {
-    "type": "object_detection",
-    "threat": False,
-    "confidence": detections[0]["confidence"] if detections else 0,
-    "count": len(detections),
-    "location": "sensor-node-pi4",
-    "classes": [d["object_class"] for d in detections],
-    "image_url": detections[0]["image_path"] if detections else ""
-}
+        print(f"Loading YOLO model: {MODEL_PATH}")
 
-send_detection(payload)
+        self.model = YOLO(str(MODEL_PATH))
+
+        print("YOLO model loaded successfully.")
+        print(f"Available classes: {self.model.names}")
+
+    def detect(
+        self,
+        image_path: Path,
+    ) -> dict[str, Any]:
+
+        if not image_path.exists():
+            raise FileNotFoundError(
+                f"Input image not found: {image_path}"
+            )
+
+        results = self.model.predict(
+            source=str(image_path),
+            conf=CONFIDENCE_THRESHOLD,
+            iou=IOU_THRESHOLD,
+            imgsz=IMAGE_SIZE,
+            device=DEVICE,
+            max_det=MAX_DETECTIONS,
+            verbose=False,
+        )
+
+        detections = []
+
+        for result in results:
+
+            for box in result.boxes:
+
+                class_id = int(box.cls[0])
+
+                confidence = float(box.conf[0])
+
+                class_name = self.model.names[class_id]
+
+                xyxy = [
+                    round(float(value), 2)
+                    for value in box.xyxy[0]
+                ]
+
+                is_threat = class_name in THREAT_CLASSES
+
+                detections.append(
+                    {
+                        "object_class": class_name,
+                        "class_id": class_id,
+                        "confidence": round(confidence, 4),
+                        "bounding_box": xyxy,
+                        "threat": is_threat,
+                    }
+                )
+
+        threat_detected = any(
+            detection["threat"]
+            for detection in detections
+        )
+
+        timestamp = datetime.now(
+            timezone.utc
+        ).isoformat()
+
+        return {
+            "timestamp": timestamp,
+            "sensor_node_id": SENSOR_NODE_ID,
+            "image_path": str(image_path),
+            "model": MODEL_PATH.name,
+            "confidence_threshold": CONFIDENCE_THRESHOLD,
+            "detections": detections,
+            "count": len(detections),
+            "threat": threat_detected,
+        }

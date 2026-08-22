@@ -1,0 +1,7 @@
+{
+    "images_processed": 7,
+    "average_latency_ms": 315.96,
+    "min_latency_ms": 111.48,
+    "max_latency_ms": 769.84,
+    "average_fps": 3.16
+}
