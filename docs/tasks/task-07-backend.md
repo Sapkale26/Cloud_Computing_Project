@@ -74,7 +74,7 @@ The k3s cluster is operational and the **frontend is deployed through Kubernetes
 
 Distributed preprocessing is operational in a partial form. The current solution works, but processing time is still high because SSH and file transfer overhead add significant delay. Further optimization is needed before this can be considered real-time.
 
-**Lead:** Purvesh Shapariya, with integration support from Janak.
+**Lead:** Purvesh Shapariya
 
 ---
 *Frankfurt University of Applied Sciences — Cloud Computing SS2026 — Group 8*
