@@ -7,6 +7,7 @@ import StatsGrid from "./components/StatsGrid";
 import LatestDetection from "./components/LatestDetection";
 import AlertsPanel from "./components/AlertsPanel";
 import ClusterStatus from "./components/ClusterStatus";
+import GrafanaPanel from "./components/GrafanaPanel";
 import DetectionsTable from "./components/DetectionsTable";
 import Footer from "./components/Footer";
 
@@ -34,6 +35,8 @@ export default function App() {
       </div>
 
       <ClusterStatus nodes={clusterQuery.data?.nodes} loading={clusterQuery.loading} />
+
+      <GrafanaPanel />
 
       <DetectionsTable detections={detectionsQuery.data} loading={detectionsQuery.loading} />
 
