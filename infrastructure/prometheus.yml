@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'raspberry-cluster'
+    static_configs:
+      - targets:
+          - '192.168.50.1:9100'
+          - '192.168.50.91:9100'
+          - '192.168.50.92:9100'
+          - '192.168.50.93:9100'
+          - '192.168.50.94:9100'
+          - '192.168.50.95:9100'
+          - '192.168.50.96:9100'
+          - '192.168.50.97:9100'
+          - '192.168.50.98:9100'
+        labels:
+          cluster: 'rpi-group8'
