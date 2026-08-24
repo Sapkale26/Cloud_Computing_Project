@@ -1,0 +1,14 @@
+{
+  "name": "minio-storage",
+  "version": "1.0.0",
+  "description": "MinIO-backed object storage service for detection snapshot images",
+  "main": "minioService.js",
+  "scripts": {
+    "test": "node test/minioService.test.js"
+  },
+  "dependencies": {
+    "minio": "^7.1.3"
+  },
+  "keywords": ["minio", "object-storage", "s3", "detections"],
+  "license": "MIT"
+}
