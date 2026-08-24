@@ -1,143 +1,107 @@
-/* ===== Group 8 — Edge Computing Cluster: Hero homepage styles ===== */
-/* Drop this file at docs/stylesheets/extra.css and reference it in mkdocs.yml:
-   extra_css:
-     - stylesheets/extra.css
-*/
+---
+title: Group 8 — Edge Computing Cluster
+hide:
+  - navigation
+---
 
-:root {
-  --ec-navy: #0f2942;
-  --ec-navy-light: #163a5c;
-  --ec-teal: #2dd4a7;
-  --ec-subtext: #a9c4de;
-}
+<div class="ec-hero" markdown>
 
-/* Hide the default h1 spacing weirdness above the hero */
-.md-content .ec-hero {
-  margin: -1.2rem -1.2rem 2rem -1.2rem;
-  padding: 3.5rem 2rem 3rem;
-  background: linear-gradient(180deg, var(--ec-navy) 0%, var(--ec-navy-light) 100%);
-  color: #fff;
-  border-radius: 0 0 12px 12px;
-}
+<div class="ec-hero__eyebrow">GROUP 8 · CLOUD COMPUTING SS2026 · FRANKFURT UAS</div>
 
-.ec-hero__eyebrow {
-  font-family: var(--md-code-font, monospace);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-size: .78rem;
-  color: var(--ec-teal);
-  margin-bottom: .9rem;
-}
+<div class="ec-hero__title">Edge Computing Cluster<br>for Real-Time <span>Threat Detection</span></div>
 
-.ec-hero__title {
-  font-size: clamp(2.1rem, 5vw, 3.2rem);
-  line-height: 1.08;
-  font-weight: 800;
-  margin: 0 0 1rem 0;
-  letter-spacing: -0.01em;
-}
+<div class="ec-hero__subtitle">
+A 9-node Raspberry Pi cluster running real-time AI threat detection at 59 FPS
+via a Hailo AI accelerator, k3s orchestration, MPI benchmarking, and live
+Telegram alerting — built and benchmarked from scratch.
+</div>
 
-.ec-hero__title span {
-  color: var(--ec-teal);
-}
+<div class="ec-hero__badges">
+  <span class="ec-badge ec-badge--accent">✓ 9 Tasks Complete</span>
+  <span class="ec-badge">Prof. Dr. Christian Baun</span>
+  <span class="ec-badge">Cloud Computing SS2026</span>
+  <a class="ec-badge" href="https://github.com/Sapkale26/Cloud_Computing_Project">github.com/Sapkale26/Cloud_Computing_Project</a>
+</div>
 
-.ec-hero__subtitle {
-  max-width: 640px;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--ec-subtext);
-  margin-bottom: 1.8rem;
-}
+</div>
 
-.ec-hero__badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .6rem;
-}
+<div class="ec-links" markdown>
 
-.ec-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  padding: .45rem .9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.04);
-  font-size: .82rem;
-  color: #dce8f3;
-  text-decoration: none !important;
-}
+<a class="ec-card" href="architecture/">
+  <div class="ec-card__label">Documentation</div>
+  <div class="ec-card__title">System Architecture</div>
+</a>
 
-.ec-badge--accent {
-  border-color: rgba(45,212,167,0.5);
-  color: var(--ec-teal);
-}
+<a class="ec-card" href="benchmarks/mpi-results/">
+  <div class="ec-card__label">Results</div>
+  <div class="ec-card__title">MPI &amp; HPL Benchmarks</div>
+</a>
 
-/* ---- Quick link cards ---- */
-.ec-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0 2.5rem 0;
-}
+<a class="ec-card" href="tasks/task-08-frontend/">
+  <div class="ec-card__label">Live System</div>
+  <div class="ec-card__title">React Dashboard →</div>
+</a>
 
-.ec-card {
-  display: block;
-  padding: 1.2rem 1.3rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 10px;
-  text-decoration: none !important;
-  transition: transform .15s ease, box-shadow .15s ease;
-  background: var(--md-default-bg-color);
-}
+</div>
 
-.ec-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
+## Key Performance Metrics
 
-.ec-card__label {
-  font-size: .72rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ec-teal);
-  font-weight: 700;
-  margin-bottom: .35rem;
-}
+<div class="ec-metrics" markdown>
 
-.ec-card__title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--md-default-fg-color);
-}
+<div class="ec-metric"><div class="ec-metric__value">59 FPS</div><div class="ec-metric__label">Hailo AI Inference</div></div>
+<div class="ec-metric"><div class="ec-metric__value">84×</div><div class="ec-metric__label">Speedup vs CPU</div></div>
+<div class="ec-metric"><div class="ec-metric__value">9</div><div class="ec-metric__label">Total Nodes</div></div>
+<div class="ec-metric"><div class="ec-metric__value">28</div><div class="ec-metric__label">MPI Processes</div></div>
+<div class="ec-metric"><div class="ec-metric__value">1.18</div><div class="ec-metric__label">GFlops (HPL Peak)</div></div>
 
-/* ---- Metric strip ---- */
-.ec-metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0 2.5rem 0;
-}
+</div>
 
-.ec-metric {
-  padding: 1rem;
-  border-radius: 10px;
-  background: var(--md-code-bg-color);
-  text-align: center;
-}
+## Project Overview
 
-.ec-metric__value {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--ec-navy);
-}
+We built a self-contained **edge-computing cluster** using commodity Raspberry Pis to perform real-time AI-based threat detection. The system demonstrates key cloud computing concepts:
 
-[data-md-color-scheme="slate"] .ec-metric__value {
-  color: var(--ec-teal);
-}
+- 🖧 **Distributed Computing** — 9-node Raspberry Pi cluster
+- ⚡ **AI Acceleration** — Hailo AI HAT+ (59 FPS vs 0.7 FPS on CPU)
+- 🔄 **Parallel Processing** — 7 Pi 3 workers for distributed preprocessing
+- ☸️ **Container Orchestration** — k3s Kubernetes
+- 📊 **Monitoring** — Prometheus + Grafana
+- 📦 **Object Storage** — MinIO S3-compatible
+- 🤖 **Alerting** — Telegram bot
 
-.ec-metric__label {
-  font-size: .75rem;
-  color: var(--md-default-fg-color--light);
-  margin-top: .2rem;
-}
+## System Architecture
+
+```
+Pi 4 (IMX500 Camera, 30fps)
+    ↓ ZeroMQ PUSH
+Pi 5 + Hailo AI HAT+ (59 FPS)
+    ↓ every 5s: parallel preprocessing
+Pi 3-1 ── Pi 3-2 ── Pi 3-3 ── Pi 3-4 ── Pi 3-5 ── Pi 3-6 ── Pi 3-7
+    ↓ merged result
+Backend API → MinIO → React Dashboard
+                    → Telegram Alerts
+                    → Grafana Monitoring
+```
+
+## Hardware
+
+| Device    | Model                 | IP               | Role                   |
+| --------- | --------------------- | ---------------- | ----------------------- |
+| Pi 5      | Raspberry Pi 5 (8GB)  | 192.168.50.1     | Master + Hailo AI HAT+ |
+| Pi 4      | Raspberry Pi 4 (4GB)  | 192.168.50.98    | Camera + ZeroMQ        |
+| Pi 3-1..7 | Raspberry Pi 3B (1GB) | 192.168.50.91-97 | MPI + k3s Workers      |
+
+## Team
+
+| Name                  | Email                                 |
+| --------------------- | ------------------------------------- |
+| Shubhangi Sapkale     | shubhangi.sapkale@stud.fra-uas.de     |
+| Janak Koradiya        | janak.koradiya@stud.fra-uas.de        |
+| Disha Bhuva           | disha.bhuva@stud.fra-uas.de           |
+| Kirti Tarsariya       | kirti.tarsariya@stud.fra-uas.de       |
+| Amina Arshad          | amina.arshad@stud.fra-uas.de          |
+| Purvesh Shapariya     | purvesh.shapariya@stud.fra-uas.de     |
+| Marcos Ortega-Jimenez | marcos.ortega-jimenez@stud.fra-uas.de |
+
+---
+
+*Frankfurt University of Applied Sciences — Cloud Computing SS2026 — Group 8*
