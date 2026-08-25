@@ -1,25 +1,24 @@
 ---
-title: Group 8 — Edge Computing Cluster
+title: Edge Computing Cluster
 hide:
   - navigation
 ---
 
 <div class="ec-hero" markdown>
 
-<div class="ec-hero__eyebrow">GROUP 8 · CLOUD COMPUTING SS2026 · FRANKFURT UAS</div>
-
 <div class="ec-hero__title">Edge Computing Cluster<br>for Real-Time <span>Threat Detection</span></div>
 
 <div class="ec-hero__subtitle">
 A 9-node Raspberry Pi cluster running real-time AI threat detection at 59 FPS
-via a Hailo AI accelerator, k3s orchestration, MPI benchmarking, and live
-Telegram alerting — built and benchmarked from scratch.
+via a Hailo AI accelerator, S3-compatible storage via MinIO, a k3s-orchestrated
+dashboard, MPI/HPL scalability benchmarking, and live Telegram alerting.
 </div>
 
 <div class="ec-hero__badges">
-  <span class="ec-badge ec-badge--accent">✓ 9 Tasks Complete</span>
-  <span class="ec-badge">Prof. Dr. Christian Baun</span>
   <span class="ec-badge">Cloud Computing SS2026</span>
+  <span class="ec-badge">Prof. Dr. Christian Baun</span>
+  <span class="ec-badge ec-badge--accent">✓ Tasks 1–9 Documented</span>
+  <span class="ec-badge">Presentation: 26 August 2026</span>
   <a class="ec-badge" href="https://github.com/Sapkale26/Cloud_Computing_Project">github.com/Sapkale26/Cloud_Computing_Project</a>
 </div>
 
@@ -52,7 +51,7 @@ Telegram alerting — built and benchmarked from scratch.
 <div class="ec-metric"><div class="ec-metric__value">84×</div><div class="ec-metric__label">Speedup vs CPU</div></div>
 <div class="ec-metric"><div class="ec-metric__value">9</div><div class="ec-metric__label">Total Nodes</div></div>
 <div class="ec-metric"><div class="ec-metric__value">28</div><div class="ec-metric__label">MPI Processes</div></div>
-<div class="ec-metric"><div class="ec-metric__value">1.18</div><div class="ec-metric__label">GFlops (HPL Peak)</div></div>
+<div class="ec-metric"><div class="ec-metric__value">12.99</div><div class="ec-metric__label">GFlops (HPL Peak, Pi 5 alone)</div></div>
 
 </div>
 
@@ -84,11 +83,11 @@ Backend API → MinIO → React Dashboard
 
 ## Hardware
 
-| Device    | Model                 | IP               | Role                   |
-| --------- | --------------------- | ---------------- | ----------------------- |
-| Pi 5      | Raspberry Pi 5 (8GB)  | 192.168.50.1     | Master + Hailo AI HAT+ |
-| Pi 4      | Raspberry Pi 4 (4GB)  | 192.168.50.98    | Camera + ZeroMQ        |
-| Pi 3-1..7 | Raspberry Pi 3B (1GB) | 192.168.50.91-97 | MPI + k3s Workers      |
+| Device    | Model                 | IP               | Role                    |
+| --------- | --------------------- | ---------------- | ------------------------ |
+| Pi 5      | Raspberry Pi 5 (8GB)  | 192.168.50.1     | Master + Hailo AI HAT+  |
+| Pi 4      | Raspberry Pi 4 (4GB)  | 192.168.50.98    | Camera + ZeroMQ         |
+| Pi 3-1..7 | Raspberry Pi 3B (1GB) | 192.168.50.91-97 | MPI + k3s Workers       |
 
 ## Team
 
