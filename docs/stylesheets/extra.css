@@ -12,11 +12,27 @@
 }
 
 .md-content .ec-hero {
-  margin: -1.2rem -1.2rem 2rem -1.2rem;
-  padding: 3.5rem 2rem 3rem;
+  /* full-bleed breakout: span the entire browser width, ignoring the
+     docs content column's max-width, regardless of sidebar/TOC state */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: -1.2rem;
+  margin-bottom: 2rem;
+  padding: 3.5rem calc(50vw - 34rem) 3rem;
   background: linear-gradient(180deg, var(--ec-charcoal) 0%, var(--ec-charcoal-light) 100%);
   color: #fff;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0;
+}
+
+@media (max-width: 76rem) {
+  .md-content .ec-hero {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .ec-hero__title {
