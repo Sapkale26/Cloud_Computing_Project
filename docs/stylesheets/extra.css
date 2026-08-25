@@ -12,6 +12,7 @@
   --ec-line: #e4e1d8;
   --ec-text2: #6b7280;
   --ec-text3: #475066;
+  --ec-navy: #14335c;
 }
 
 /* ---- HERO: full-bleed, edge to edge ---- */
@@ -83,9 +84,10 @@
 
 .ec-section-label {
   font-size: .72rem;
+  font-weight: 700;
   letter-spacing: .15em;
   text-transform: uppercase;
-  color: var(--ec-text2);
+  color: var(--ec-navy);
   margin: 2.5rem 0 1.2rem;
   padding-bottom: .6rem;
   border-bottom: 1px solid var(--ec-line);
@@ -113,10 +115,11 @@
 .ec-card:hover { background: var(--md-code-bg-color); }
 
 .ec-card__label {
-  font-size: .72rem;
+   font-size: .72rem;
+  font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--ec-text2);
+  color: var(--ec-navy);
   margin-bottom: .3rem;
 }
 
@@ -195,8 +198,16 @@
 /* ---- Team grid ---- */
 .ec-team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: .8rem;
+}
+
+@media (max-width: 60rem) {
+  .ec-team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 30rem) {
+  .ec-team-grid { grid-template-columns: 1fr; }
 }
 
 .ec-team-card {
