@@ -12,6 +12,17 @@
   --ec-line: #e4e1d8;
   --ec-text2: #6b7280;
   --ec-text3: #475066;
+
+  /* Override Material's default blue theme with our charcoal + amber palette.
+     This recolors the top nav bar, tabs, search box, and accent links
+     site-wide, not just the homepage. */
+  --md-primary-fg-color: var(--ec-charcoal);
+  --md-primary-fg-color--light: var(--ec-charcoal-light);
+  --md-primary-fg-color--dark: var(--ec-charcoal);
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: var(--ec-amber);
+  --md-accent-fg-color--transparent: rgba(212, 160, 23, 0.1);
+  --md-accent-bg-color: #ffffff;
 }
 
 /* ---- HERO: full-bleed, edge to edge ---- */
