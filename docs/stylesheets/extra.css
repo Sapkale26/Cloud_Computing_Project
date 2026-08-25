@@ -12,6 +12,7 @@
   --ec-line: #e4e1d8;
   --ec-text2: #6b7280;
   --ec-text3: #475066;
+  --ec-black: #000000;
 }
 
 /* ---- HERO: full-bleed, edge to edge ---- */
@@ -23,6 +24,7 @@
   margin-top: -1.2rem;
   margin-bottom: 0;
   padding: 3.5rem calc(50vw - 34rem) 3rem;
+  box-sizing: border-box;
   background: linear-gradient(180deg, var(--ec-charcoal) 0%, var(--ec-charcoal-light) 100%);
   color: #fff;
 }
@@ -83,9 +85,10 @@
 
 .ec-section-label {
   font-size: .72rem;
+  font-weight: 700;
   letter-spacing: .15em;
   text-transform: uppercase;
-  color: var(--ec-text2);
+  color: var(--ec-black);
   margin: 2.5rem 0 1.2rem;
   padding-bottom: .6rem;
   border-bottom: 1px solid var(--ec-line);
@@ -114,9 +117,10 @@
 
 .ec-card__label {
   font-size: .72rem;
+  font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--ec-text2);
+  color: var(--ec-black);
   margin-bottom: .3rem;
 }
 
@@ -192,11 +196,19 @@
 
 .ec-node__desc { font-size: .82rem; color: var(--ec-text3); margin-top: .15rem; }
 
-/* ---- Team grid ---- */
+/* ---- Team grid: fixed 3 columns (3-3-1 for 7 members) ---- */
 .ec-team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: .8rem;
+}
+
+@media (max-width: 60rem) {
+  .ec-team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 30rem) {
+  .ec-team-grid { grid-template-columns: 1fr; }
 }
 
 .ec-team-card {
