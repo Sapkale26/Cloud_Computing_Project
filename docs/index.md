@@ -61,15 +61,20 @@ dashboard, MPI/HPL scalability benchmarking, and live Telegram alerting.
 <div class="ec-section-label">Project Overview</div>
 
 <div class="ec-overview" markdown>
-We built a self-contained edge-computing cluster using commodity Raspberry Pis to perform real-time AI-based threat detection. The system demonstrates key cloud computing concepts:
-
-🖧 Distributed Computing — 9-node Raspberry Pi cluster
-⚡ AI Acceleration — Hailo AI HAT+ (59 FPS vs 0.7 FPS on CPU)
-🔄 Parallel Processing — 7 Pi 3 workers for distributed preprocessing
-☸️ Container Orchestration — k3s Kubernetes
-📊 Monitoring — Prometheus + Grafana
-📦 Object Storage — MinIO S3-compatible
-🤖 Alerting — Telegram bo
+<p>
+We built a self-contained edge-computing cluster using commodity Raspberry Pis
+to demonstrate real-time AI-based threat detection and distributed cloud-computing concepts.
+</p>
+<div class="ec-arch-card__title">Key Capabilities</div>
+<ul>
+  <li>⚡ AI Acceleration — Hailo AI HAT+ delivers 59 FPS compared with 0.7 FPS on CPU.</li>
+  <li>🖥️ Distributed Computing — 9-node Raspberry Pi cluster for distributed workloads.</li>
+  <li>🔄 Parallel Processing — 7 Raspberry Pi 3 workers handle distributed preprocessing.</li>
+  <li>☸️ Container Orchestration — k3s Kubernetes manages workloads across the cluster.</li>
+  <li>📊 Monitoring — Prometheus + Grafana provide cluster monitoring.</li>
+  <li>📦 Object Storage — MinIO provides S3-compatible object storage.</li>
+  <li>🤖 Alerting — Telegram Bot provides real-time threat notifications.</li>
+</ul>
 </div>
 
 <div class="ec-section-label">Cluster Architecture</div>
