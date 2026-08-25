@@ -2,11 +2,12 @@
 title: Edge Computing Cluster
 hide:
   - navigation
+  - toc
 ---
 
 <div class="ec-hero" markdown>
 
-<div class="ec-hero__title">Edge Computing Cluster<br>for Real-Time <span>Threat Detection</span></div>
+<h1 class="ec-hero__title">Edge Computing Cluster<br>for Real-Time <span>Threat Detection</span></h1>
 
 <div class="ec-hero__subtitle">
 A 9-node Raspberry Pi cluster running real-time AI threat detection at 59 FPS
@@ -23,6 +24,8 @@ dashboard, MPI/HPL scalability benchmarking, and live Telegram alerting.
 </div>
 
 </div>
+
+<div class="ec-page" markdown>
 
 <div class="ec-links" markdown>
 
@@ -43,7 +46,7 @@ dashboard, MPI/HPL scalability benchmarking, and live Telegram alerting.
 
 </div>
 
-## Key Performance Metrics
+<div class="ec-section-label">Key Performance Metrics</div>
 
 <div class="ec-metrics" markdown>
 
@@ -55,8 +58,9 @@ dashboard, MPI/HPL scalability benchmarking, and live Telegram alerting.
 
 </div>
 
-## Project Overview
+<div class="ec-section-label">Project Overview</div>
 
+<div class="ec-overview" markdown>
 We built a self-contained **edge-computing cluster** using commodity Raspberry Pis to perform real-time AI-based threat detection. The system demonstrates key cloud computing concepts:
 
 - 🖧 **Distributed Computing** — 9-node Raspberry Pi cluster
@@ -66,8 +70,14 @@ We built a self-contained **edge-computing cluster** using commodity Raspberry P
 - 📊 **Monitoring** — Prometheus + Grafana
 - 📦 **Object Storage** — MinIO S3-compatible
 - 🤖 **Alerting** — Telegram bot
+</div>
 
-## System Architecture
+<div class="ec-section-label">Cluster Architecture</div>
+
+<div class="ec-arch-grid" markdown>
+
+<div class="ec-arch-card" markdown>
+<div class="ec-arch-card__title">Network Flow</div>
 
 ```
 Pi 4 (IMX500 Camera, 30fps)
@@ -81,26 +91,77 @@ Backend API → MinIO → React Dashboard
                     → Grafana Monitoring
 ```
 
-## Hardware
+</div>
 
-| Device    | Model                 | IP               | Role                    |
-| --------- | --------------------- | ---------------- | ------------------------ |
-| Pi 5      | Raspberry Pi 5 (8GB)  | 192.168.50.1     | Master + Hailo AI HAT+  |
-| Pi 4      | Raspberry Pi 4 (4GB)  | 192.168.50.98    | Camera + ZeroMQ         |
-| Pi 3-1..7 | Raspberry Pi 3B (1GB) | 192.168.50.91-97 | MPI + k3s Workers       |
+<div class="ec-arch-card" markdown>
+<div class="ec-arch-card__title">Hardware Nodes</div>
 
-## Team
+<div class="ec-node-list" markdown>
 
-| Name                  | Email                                 |
-| --------------------- | ------------------------------------- |
-| Shubhangi Sapkale     | shubhangi.sapkale@stud.fra-uas.de     |
-| Janak Koradiya        | janak.koradiya@stud.fra-uas.de        |
-| Disha Bhuva           | disha.bhuva@stud.fra-uas.de           |
-| Kirti Tarsariya       | kirti.tarsariya@stud.fra-uas.de       |
-| Amina Arshad          | amina.arshad@stud.fra-uas.de          |
-| Purvesh Shapariya     | purvesh.shapariya@stud.fra-uas.de     |
-| Marcos Ortega-Jimenez | marcos.ortega-jimenez@stud.fra-uas.de |
+<div class="ec-node" markdown>
+<div class="ec-node__name">Pi 5</div>
+<div class="ec-node__desc">Raspberry Pi 5 (8GB) · 192.168.50.1 · Master + Hailo AI HAT+</div>
+</div>
 
----
+<div class="ec-node" markdown>
+<div class="ec-node__name">Pi 4</div>
+<div class="ec-node__desc">Raspberry Pi 4 (4GB) · 192.168.50.98 · Camera + ZeroMQ</div>
+</div>
 
+<div class="ec-node" markdown>
+<div class="ec-node__name">Pi 3-1..7</div>
+<div class="ec-node__desc">Raspberry Pi 3B (1GB) · 192.168.50.91-97 · MPI + k3s Workers</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="ec-section-label">Team</div>
+
+<div class="ec-team-grid" markdown>
+
+<div class="ec-team-card" markdown>
+<div class="ec-team-card__name">Shubhangi Sapkale</div>
+<div class="ec-team-card__email">shubhangi.sapkale@stud.fra-uas.de</div>
+</div>
+
+<div class="ec-team-card" markdown>
+<div class="ec-team-card__name">Janak Koradiya</div>
+<div class="ec-team-card__email">janak.koradiya@stud.fra-uas.de</div>
+</div>
+
+<div class="ec-team-card" markdown>
+<div class="ec-team-card__name">Disha Bhuva</div>
+<div class="ec-team-card__email">disha.bhuva@stud.fra-uas.de</div>
+</div>
+
+<div class="ec-team-card" markdown>
+<div class="ec-team-card__name">Kirti Tarsariya</div>
+<div class="ec-team-card__email">kirti.tarsariya@stud.fra-uas.de</div>
+</div>
+
+<div class="ec-team-card" markdown>
+<div class="ec-team-card__name">Amina Arshad</div>
+<div class="ec-team-card__email">amina.arshad@stud.fra-uas.de</div>
+</div>
+
+<div class="ec-team-card" markdown>
+<div class="ec-team-card__name">Purvesh Shapariya</div>
+<div class="ec-team-card__email">purvesh.shapariya@stud.fra-uas.de</div>
+</div>
+
+<div class="ec-team-card" markdown>
+<div class="ec-team-card__name">Marcos Ortega-Jimenez</div>
+<div class="ec-team-card__email">marcos.ortega-jimenez@stud.fra-uas.de</div>
+</div>
+
+</div>
+
+<div class="ec-footnote" markdown>
 *Frankfurt University of Applied Sciences — Cloud Computing SS2026 — Group 8*
+</div>
+
+</div>
