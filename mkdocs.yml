@@ -8,6 +8,10 @@ repo_url: https://github.com/Sapkale26/Cloud_Computing_Project
 
 theme:
   name: material
+  custom_dir: overrides
+  palette:
+    ...
+  name: material
   palette:
     - scheme: default
       primary: blue
