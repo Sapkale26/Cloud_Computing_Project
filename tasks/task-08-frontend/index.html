@@ -1,0 +1,2503 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI-Based Threat Detection System | Cloud Computing SS2026 | Frankfurt UAS">
+      
+      
+        <meta name="author" content="Group 8">
+      
+      
+        <link rel="canonical" href="https://sapkale26.github.io/Cloud_Computing_Project/tasks/task-08-frontend/">
+      
+      
+        <link rel="prev" href="../task-07-backend/">
+      
+      
+        <link rel="next" href="../task-09-telegram/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Task 8 — Frontend - Group 8 — Edge Computing Cluster</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#task-8-frontend-dashboard" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Group 8 — Edge Computing Cluster" class="md-header__button md-logo" aria-label="Group 8 — Edge Computing Cluster" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Group 8 — Edge Computing Cluster
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 8 — Frontend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sapkale26/Cloud_Computing_Project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sapkale26/Cloud_Computing_Project
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting-started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../architecture/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../task-01-cluster-boot/" class="md-tabs__link">
+          
+  
+  
+  Tasks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../benchmarks/mpi-results/" class="md-tabs__link">
+          
+  
+  
+  Benchmarks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../runbook/how-to-restart/" class="md-tabs__link">
+          
+  
+  
+  Runbook
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Group 8 — Edge Computing Cluster" class="md-nav__button md-logo" aria-label="Group 8 — Edge Computing Cluster" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Group 8 — Edge Computing Cluster
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sapkale26/Cloud_Computing_Project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sapkale26/Cloud_Computing_Project
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tasks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-01-cluster-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Cluster Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-02-hpl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 2 — HPL Benchmark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-03-mpi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 3 — MPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-04-scaling-laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 4 — Scaling Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-05-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 5 — Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-06-edge-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 6 — Edge AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-07-backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 7 — Backend & K8s
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 8 — Frontend
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 8 — Frontend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-these-technology-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why These Technology Choices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why These Technology Choices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-react-vite-and-not-something-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why React + Vite (and not something else)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-no-css-framework-tailwind-bootstrap-mui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why no CSS framework (Tailwind, Bootstrap, MUI)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-hand-drawn-svg-icons-instead-of-an-icon-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why hand-drawn SVG icons instead of an icon library?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-a-custom-useapi-hook-instead-of-redux-react-query-swr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a custom useApi hook instead of Redux / React Query / SWR?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-polling-instead-of-websockets-server-sent-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why polling instead of WebSockets / Server-Sent Events?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow-the-useapi-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow: the useApi Hook
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Flow: the useApi Hook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-panel-poll-intervals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Panel Poll Intervals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-keep-loading-error-and-data-as-three-separate-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why keep loading, error, and data as three separate states?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Walkthrough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionbanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectionBanner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topologystrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TopologyStrip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statsgrid-statcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StatsGrid / StatCard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latestdetection-confidencering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LatestDetection + ConfidenceRing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertspanel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AlertsPanel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterstatus-nodecard-metricbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClusterStatus / NodeCard / MetricBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafanapanel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GrafanaPanel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detectionstable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DetectionsTable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Footer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iconjsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Icon.jsx
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-topology-strip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Topology Strip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graceful-degradation-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graceful Degradation Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backend-api-surface-consumed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend API Surface Consumed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backend API Surface Consumed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields-each-panel-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields Each Panel Reads
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-tone-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status-Tone Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsive-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsive Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-resilience-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessibility &amp; Resilience Details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build &amp; Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-09-telegram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 9 — Telegram Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Benchmarks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmarks/mpi-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MPI Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmarks/hpl-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPL Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmarks/amdahl-graphs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amdahl's Law
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runbook
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runbook
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runbook/how-to-restart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runbook/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-these-technology-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why These Technology Choices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why These Technology Choices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-react-vite-and-not-something-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why React + Vite (and not something else)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-no-css-framework-tailwind-bootstrap-mui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why no CSS framework (Tailwind, Bootstrap, MUI)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-hand-drawn-svg-icons-instead-of-an-icon-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why hand-drawn SVG icons instead of an icon library?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-a-custom-useapi-hook-instead-of-redux-react-query-swr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a custom useApi hook instead of Redux / React Query / SWR?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-polling-instead-of-websockets-server-sent-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why polling instead of WebSockets / Server-Sent Events?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow-the-useapi-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow: the useApi Hook
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Flow: the useApi Hook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-panel-poll-intervals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Panel Poll Intervals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-keep-loading-error-and-data-as-three-separate-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why keep loading, error, and data as three separate states?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Walkthrough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionbanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectionBanner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topologystrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TopologyStrip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statsgrid-statcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StatsGrid / StatCard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latestdetection-confidencering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LatestDetection + ConfidenceRing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertspanel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AlertsPanel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterstatus-nodecard-metricbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClusterStatus / NodeCard / MetricBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafanapanel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GrafanaPanel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detectionstable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DetectionsTable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Footer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iconjsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Icon.jsx
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-topology-strip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Topology Strip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graceful-degradation-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graceful Degradation Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backend-api-surface-consumed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend API Surface Consumed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backend API Surface Consumed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields-each-panel-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields Each Panel Reads
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-tone-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status-Tone Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsive-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsive Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-resilience-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessibility &amp; Resilience Details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build &amp; Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="task-8-frontend-dashboard">Task 8 — Frontend Dashboard</h1>
+<h2 id="overview">Overview</h2>
+<p>The frontend is a single-page <strong>React 18 + Vite</strong> dashboard ("Edge Cluster Monitor") that gives a live, glanceable view of the whole edge-computing pipeline: the physical Pi cluster's health, the latest camera detection from the Hailo inference service, active threat alerts, and a searchable log of recent detections. It talks to the Node.js backend over plain REST/JSON and embeds a Grafana panel for deeper node metrics.</p>
+<p>It is built as a static site (<code>vite build</code>), packaged into an <code>nginx:alpine</code> Docker image, and deployed as a Kubernetes Deployment on the k3s cluster running on Pi 5 + the Pi 3 workers, exposed via a NodePort on <code>192.168.50.1:30080</code>.</p>
+<p>This document goes through every part of the frontend in the order a developer would actually build it — project setup, the data layer, then every UI component, then styling and deployment — and explains the reasoning ("why", not just "what") behind each decision, in the same spirit as the cluster/HPL/MPI task write-ups.</p>
+<h2 id="project-structure">Project Structure</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>services/frontend/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|-- index.html        single HTML entry point, loads /src/main.jsx as an ES module
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|-- vite.config.js     Vite + @vitejs/plugin-react, no custom config needed
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>|-- package.json       2 runtime deps (react, react-dom), 2 dev deps (vite, plugin-react)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>|-- .env.example       documents VITE_API_URL / VITE_GRAFANA_URL
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>|-- Dockerfile         nginx:alpine, copies the pre-built dist/ folder
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>|-- src/
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>|   |-- main.jsx       React root, StrictMode
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>|   |-- App.jsx        top-level layout, owns all 5 useApi() calls
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>|   |-- App.css        component-level styles
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>|   |-- index.css      design tokens (CSS custom properties) + global resets
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>|   |-- api/
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>|   |   `-- client.js  API_BASE constant, fetchJson() wrapper, ApiError class
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>|   |-- hooks/
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>|   |   |-- useApi.js    generic polling hook used by every panel
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>|   |   `-- useClock.js  1-second ticking clock for the header
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>|   |-- utils/
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>|   |   `-- format.js  formatTime / formatClock / formatPercent / statusTone
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>|   `-- components/
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>|       |-- Header.jsx
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>|       |-- ConnectionBanner.jsx
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>|       |-- TopologyStrip.jsx
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>|       |-- StatsGrid.jsx / StatCard.jsx
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>|       |-- LatestDetection.jsx  (contains the ConfidenceRing sub-component)
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>|       |-- AlertsPanel.jsx
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>|       |-- ClusterStatus.jsx / NodeCard.jsx  (NodeCard contains MetricBar)
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>|       |-- GrafanaPanel.jsx
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>|       |-- DetectionsTable.jsx
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>|       |-- Footer.jsx
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>|       `-- Icon.jsx  15 hand-drawn inline SVG icons, one file
+</code></pre></div>
+<p>Every concern lives in exactly one place: network access in <code>api/</code>, reusable stateful logic in <code>hooks/</code>, pure formatting helpers in <code>utils/</code>, and presentation in <code>components/</code>. Nothing outside <code>api/client.js</code> knows the API base URL, and nothing outside <code>hooks/useApi.js</code> knows how polling or retry logic works — every component just consumes the hook's return value.</p>
+<h2 id="component-tree">Component Tree</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>App
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> |-- Header (brand, live clock, online/offline pill, API host)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> |-- ConnectionBanner (shown only when a poll call fails)
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> |-- TopologyStrip (one colored chip per cluster node -- signature element)
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> |-- StatsGrid
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a> |   `-- StatCard x 5 (detections today, people, threats, accuracy, active nodes)
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a> |-- main-grid
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a> |   |-- LatestDetection (image + confidence ring + metadata)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a> |   `-- AlertsPanel (scrollable alert log, local acknowledge toggle)
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a> |-- ClusterStatus
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a> |   `-- NodeCard x N (per-node CPU/RAM bars, temperature, uptime)
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a> |-- GrafanaPanel (embedded iframe -&gt; node_exporter dashboard)
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a> |-- DetectionsTable (search + filter tabs over the full detection log)
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a> `-- Footer
+</code></pre></div>
+<h2 id="why-these-technology-choices">Why These Technology Choices</h2>
+<h3 id="why-react-vite-and-not-something-else">Why React + Vite (and not something else)?</h3>
+<table>
+<thead>
+<tr>
+<th>Alternative</th>
+<th>Why it was not used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plain HTML/JS/jQuery</td>
+<td>Five independently-polling, independently-loading panels with shared status derivation (online/offline) is exactly the kind of state-driven UI React is good at; hand-rolled DOM updates would re-implement what hooks already give for free</td>
+</tr>
+<tr>
+<td>Next.js / a meta-framework</td>
+<td>There is no server-side rendering need and no routing — this is a single always-on kiosk view, so an SSR framework adds build complexity (and a Node.js runtime in the container) for no benefit</td>
+</tr>
+<tr>
+<td>Vue / Svelte / Angular</td>
+<td>React was the framework the team already knew from other coursework, which mattered more than any technical edge for a project this size</td>
+</tr>
+<tr>
+<td>Create React App</td>
+<td>CRA is effectively unmaintained; Vite's dev server starts and hot-reloads far faster, which matters when iterating on a Raspberry Pi over Wi-Fi</td>
+</tr>
+</tbody>
+</table>
+<p>Vite's production build is also what makes the deployment story simple: <code>vite build</code> outputs plain static files, so the runtime container is just nginx serving HTML/CSS/JS — no Node.js process needs to run on the cluster to serve the dashboard.</p>
+<h3 id="why-no-css-framework-tailwind-bootstrap-mui">Why no CSS framework (Tailwind, Bootstrap, MUI)?</h3>
+<ul>
+<li>The whole UI uses one consistent dark "NOC monitor" palette — a handful of CSS custom properties in <code>index.css</code> gives every component the same colors/radii/fonts without a utility-class build step or a component library's opinions to work around.</li>
+<li>A utility-class framework (Tailwind) would need a PostCSS build step and a purge/JIT config; a component library (MUI) would ship its own theming system on top of ours. Neither pays for itself on an 11-component dashboard.</li>
+<li>Every custom property is one line to change (e.g. re-theme <code>--accent-cyan</code>) and it updates the whole app — the same leverage a design-token system gives, without a dependency.</li>
+</ul>
+<h3 id="why-hand-drawn-svg-icons-instead-of-an-icon-library">Why hand-drawn SVG icons instead of an icon library?</h3>
+<p><code>Icon.jsx</code> defines 15 icons (wifi, wifi-off, alert-triangle, users, activity, shield-check, server, cpu, thermometer, clock, bell, search, map-pin, layers, refresh, gauge) as plain inline SVG functions sharing one base stroke style (20×20 viewBox, 1.6px stroke, round caps/joins, <code>currentColor</code> for fill/stroke). This avoids adding a package like <code>lucide-react</code> or <code>react-icons</code> purely to render about 15 shapes, keeps the icon color tied to CSS (color cascades into <code>currentColor</code> automatically — e.g. a status pill just sets its own text color and the icon follows), and means the bundle only ships exactly the icons actually used.</p>
+<h3 id="why-a-custom-useapi-hook-instead-of-redux-react-query-swr">Why a custom useApi hook instead of Redux / React Query / SWR?</h3>
+<ul>
+<li>There is no client-side mutation, caching invalidation, or cross-component derived state complex enough to need Redux — every panel independently GETs its own endpoint on its own interval and renders it. A global store would add indirection without solving a problem the app actually has.</li>
+<li>React Query/SWR solve caching, dedup, and background refetch — genuinely useful, but for 5 endpoints on fixed 3-8s intervals, a ~30-line hook implements the one behavior that matters here (keep last-known-good data on error) directly, without learning a third-party cache API or adding it to the bundle.</li>
+<li>Every additional dependency is one more thing to keep updated on a student project with a hard demo deadline — the team optimized for "can be understood by reading one file" over "industry-standard library".</li>
+</ul>
+<h3 id="why-polling-instead-of-websockets-server-sent-events">Why polling instead of WebSockets / Server-Sent Events?</h3>
+<p>The backend already exposes plain REST endpoints (used by the Telegram bot and the mobile-friendly dashboard alike), so polling reuses the exact same API surface with zero extra backend work. A push channel (WebSocket/SSE) would need a persistent connection held open through the same NodePort/nginx path the static files are served from, plus reconnect logic on the frontend — meaningful extra complexity for data that changes at most every few seconds. Polling intervals (see below) are tuned per endpoint instead, which gets "close enough to real-time" for a dashboard without the operational cost of a stateful connection on constrained Pi hardware.</p>
+<h2 id="data-flow-the-useapi-hook">Data Flow: the useApi Hook</h2>
+<p>Every panel is driven by a single reusable hook, <code>useApi(endpoint, intervalMs)</code>, instead of one bespoke fetch effect per component. It polls the given endpoint on a fixed interval and exposes <code>{ data, error, loading, lastUpdated, refresh }</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">useApi</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span><span class="w"> </span><span class="nx">intervalMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">setData</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">setError</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p">...</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">load</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchJson</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">);</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">mountedRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="nx">setData</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span><span class="w">     </span><span class="c1">// only overwritten on SUCCESS</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="nx">setError</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">mountedRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">      </span><span class="nx">setError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w">     </span><span class="c1">// data is left untouched on failure</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mountedRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">endpoint</span><span class="p">]);</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="nx">load</span><span class="p">();</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">load</span><span class="p">,</span><span class="w"> </span><span class="nx">intervalMs</span><span class="p">);</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">load</span><span class="p">,</span><span class="w"> </span><span class="nx">intervalMs</span><span class="p">]);</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">loading</span><span class="p">,</span><span class="w"> </span><span class="nx">lastUpdated</span><span class="p">,</span><span class="w"> </span><span class="nx">refresh</span><span class="o">:</span><span class="w"> </span><span class="nx">load</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Why keep data untouched on a failed poll?</strong> A dropped Wi-Fi hop or a Pi rebooting mid-demo is expected on this hardware. If a failed request cleared the state, every panel would flash empty every few seconds during any network hiccup. Instead the dashboard keeps showing the last-known-good values and raises a single, dashboard-wide <code>ConnectionBanner</code> so the person watching knows the data is stale without the UI going blank.</p>
+<h3 id="per-panel-poll-intervals">Per-Panel Poll Intervals</h3>
+<p><code>App.jsx</code> calls the hook five times with different intervals, matched to how fast each data source actually changes:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Interval</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/detections/latest</code></td>
+<td>3,000 ms</td>
+<td>Camera feed is the most time-sensitive panel</td>
+</tr>
+<tr>
+<td><code>/api/stats</code></td>
+<td>5,000 ms</td>
+<td>Aggregate counters change slowly</td>
+</tr>
+<tr>
+<td><code>/api/alerts</code></td>
+<td>5,000 ms</td>
+<td>Alerts are infrequent but should feel prompt</td>
+</tr>
+<tr>
+<td><code>/api/detections</code></td>
+<td>5,000 ms</td>
+<td>Table view, not safety-critical to the second</td>
+</tr>
+<tr>
+<td><code>/api/cluster/nodes</code></td>
+<td>8,000 ms</td>
+<td>CPU/RAM/temp on a Pi 3 barely moves within 8s; reduces SSH-polling load on the backend</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-keep-loading-error-and-data-as-three-separate-states">Why keep loading, error, and data as three separate states?</h3>
+<p>It would be simpler to collapse everything into one status enum, but the three booleans/values are genuinely independent and every panel needs a different combination of them: <code>loading</code> alone drives the very first skeleton render, <code>error</code> alone drives the dashboard-wide banner, and <code>data</code> alone drives what's on screen — including while <code>error</code> is simultaneously true, which is the whole point of the stale-data pattern. A single enum can't represent "have data AND currently erroring" without extra cases that just re-derive these three values anyway.</p>
+<h2 id="component-walkthrough">Component Walkthrough</h2>
+<p>Every panel below follows the same contract: it receives its slice of API data plus a loading flag as props from <code>App.jsx</code>, and is otherwise a pure function of those props — no component calls <code>useApi</code> itself. Centralizing all five calls in <code>App.jsx</code> makes the full set of network dependencies visible in one place instead of scattered across the tree.</p>
+<h3 id="header">Header</h3>
+<p>Shows the brand mark/title, a live clock (via <code>useClock</code>, ticking every second independently of any network poll), an online/offline status pill, and — on wider viewports only (<code>min-width: 900px</code>) — the raw API host it's currently pointed at. That last piece is deliberately hidden on narrow screens: it's a debugging aid for whoever is presenting the dashboard, not something a casual viewer needs, so it's the first thing dropped when space is tight.</p>
+<p><code>isOnline</code> is not its own API call — it's derived once in <code>App.jsx</code> as <code>!anyError</code>, where <code>anyError</code> is true if any of the five <code>useApi</code> calls currently has an error. This means "Live" only shows when every single data source is reachable, which is a deliberately conservative definition of "online" for a monitoring tool.</p>
+<h3 id="connectionbanner">ConnectionBanner</h3>
+<p>A single-line, dashboard-wide alert (<code>role="alert"</code>) that appears only when <code>anyError</code> is true, naming the exact <code>API_BASE</code> URL that couldn't be reached. One shared banner was chosen over five separate per-panel error messages so a total backend outage produces one clear signal instead of five redundant ones stacked down the page.</p>
+<h3 id="topologystrip">TopologyStrip</h3>
+<p>The dashboard's signature element and the first thing rendered after the header — see below.</p>
+<h3 id="statsgrid-statcard">StatsGrid / StatCard</h3>
+<p>Five identical <code>StatCard</code> instances (detections today, people detected, threats flagged, detection accuracy, active/total nodes), each just <code>{ label, value, icon, tone }</code>. Using one generic card component parameterized by <code>tone</code> (cyan/violet/red/green/amber, each mapped to a CSS custom property via <code>--tone-color</code>) instead of five bespoke components means the exact same layout/skeleton/hover logic is guaranteed consistent across all five, and adding a sixth stat later is a one-line addition to <code>StatsGrid.jsx</code>.</p>
+<p>The value column shows a skeleton shimmer only while <code>loading &amp;&amp; value === null</code> — once any value has ever loaded (including a stale one), the card keeps showing it rather than reverting to a skeleton on every subsequent poll, avoiding a distracting flicker every 5 seconds.</p>
+<h3 id="latestdetection-confidencering">LatestDetection + ConfidenceRing</h3>
+<p>Shows the most recent detection's image (served from MinIO), a threat/safe badge overlaid on the image, and a metadata grid (time, count, location, detected classes). A small inline <code>ConfidenceRing</code> sub-component renders the confidence percentage as a ring using a CSS <code>conic-gradient</code> rather than an SVG arc or a charting library — a conic-gradient needs zero extra markup or math beyond <code>percent * 3.6</code> (degrees per percentage point) and re-colors automatically between the cyan "safe" tone and red "threat" tone.</p>
+<p>If the image fails to load (an expired MinIO URL, a network blip), an <code>onError</code> handler flips a local <code>imgFailed</code> flag and the image block is simply omitted — the metadata still renders underneath. This was chosen over a placeholder/broken-image icon because a blank image slot reads as "no photo available" whereas a broken-image icon reads as "something is wrong", which is misleading when only the photo, not the detection itself, failed to load.</p>
+<h3 id="alertspanel">AlertsPanel</h3>
+<p>A scrollable list of active alerts, each with a timestamp, message, and severity-colored left border (amber for normal, red for high). Alerts can be marked "Acked" — but this state is tracked in a local <code>Set</code> (<code>useState(() =&gt; new Set())</code>) rather than sent to the backend, because the API does not currently expose a write endpoint for acknowledgement. The team's choice was to demo the interaction honestly with local-only state rather than build a fake write endpoint just to make the button "work" end-to-end — acknowledging is visual only and resets on page reload.</p>
+<h3 id="clusterstatus-nodecard-metricbar">ClusterStatus / NodeCard / MetricBar</h3>
+<p>Renders one <code>NodeCard</code> per cluster node with CPU% and memory% as horizontal <code>MetricBar</code>s, plus temperature and uptime in the footer. The control-plane node (Pi 5) gets a subtly different border color (<code>node-card--cp</code>) so it's visually distinguishable from the seven worker nodes at a glance, without needing a text label. Both CPU and memory bars share the same <code>statusTone()</code> thresholds as the topology chips, so a node that looks "red" in the strip at the top also shows red bars here — one consistent color vocabulary for health across the whole dashboard.</p>
+<h3 id="grafanapanel">GrafanaPanel</h3>
+<p>A plain <code>&lt;iframe&gt;</code> embedding the cluster's existing Grafana "Node Exporter Full" dashboard in kiosk mode, rather than re-implementing historical CPU/memory graphs in React. Grafana already does this well (it's already running on Pi 5, reading from Prometheus, which is already scraping node_exporter on every Pi) — embedding it avoids duplicating that whole pipeline just to draw a line chart the dashboard doesn't otherwise need.</p>
+<h3 id="detectionstable">DetectionsTable</h3>
+<p>A searchable, filterable table of the full detection history (time, type, classes, count, confidence, location, status). Search and the three filter tabs (All/Threats/People) are wrapped in <code>useMemo</code>, re-computing the filtered list only when the raw rows, the filter, or the query text actually change — this matters because the underlying data re-polls every 5 seconds regardless of whether the user is typing, so without memoization every keystroke would re-filter against a list that just silently changed underneath it. Threat rows get a colored left-edge accent (<code>box-shadow: inset</code> rather than a border, so it doesn't shift the table's column widths) to make them scannable without reading the Status column.</p>
+<h3 id="footer">Footer</h3>
+<p>Static attribution text (team, course, hardware). The one component in the tree that takes no props and touches no API — included mainly so the dashboard doesn't end abruptly after the data table.</p>
+<h3 id="iconjsx">Icon.jsx</h3>
+<p>All 15 icons share one base props object (viewBox, stroke width, line caps/joins) spread into each <code>&lt;svg&gt;</code>, so adding icon #16 is copy-pasting one function rather than reconciling a new shape against a design system. Every icon accepts and forwards arbitrary <code>...props</code>, so call sites can override size/class without the icon component needing to know about it.</p>
+<h2 id="the-topology-strip">The Topology Strip</h2>
+<p>Rather than lead the dashboard with an abstract "big number" hero stat, the top of the page is a literal, compact read-out of the physical cluster: one chip per node (CP for control-plane, W for worker), colored green/amber/red from live CPU% and readiness. This is the actual thing being monitored — a Raspberry Pi cluster — made glanceable in under a second, and it doubles as a loading skeleton (8 shimmering placeholder chips) while the first <code>/api/cluster/nodes</code> response is in flight.</p>
+<h2 id="graceful-degradation-pattern">Graceful Degradation Pattern</h2>
+<p>The same pattern repeats across every panel: render a skeleton while <code>loading &amp;&amp; !data</code>, render the real content once data arrives, and render a small empty-state message ("Waiting for the first detection…", "No active alerts. All clear.") rather than nothing at all when a response is legitimately empty. This keeps layout stable and avoids the dashboard ever looking broken versus simply quiet.</p>
+<h2 id="backend-api-surface-consumed">Backend API Surface Consumed</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Used by</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/stats</code></td>
+<td>GET</td>
+<td>StatsGrid</td>
+<td>Detections today, people, threats, accuracy, active/total nodes</td>
+</tr>
+<tr>
+<td><code>/api/detections/latest</code></td>
+<td>GET</td>
+<td>LatestDetection</td>
+<td>Most recent detection incl. MinIO image URL, confidence, class list</td>
+</tr>
+<tr>
+<td><code>/api/detections</code></td>
+<td>GET</td>
+<td>DetectionsTable</td>
+<td>Full detection log for the searchable/filterable table</td>
+</tr>
+<tr>
+<td><code>/api/alerts</code></td>
+<td>GET</td>
+<td>AlertsPanel</td>
+<td>Active threat alerts (severity, message, timestamp)</td>
+</tr>
+<tr>
+<td><code>/api/cluster/nodes</code></td>
+<td>GET</td>
+<td>TopologyStrip, ClusterStatus</td>
+<td>Per-node status/role/CPU%/RAM%/temp/uptime, via backend SSH to each Pi</td>
+</tr>
+</tbody>
+</table>
+<p>All five calls share one thin client (<code>api/client.js</code>): a single <code>API_BASE</code> constant and a <code>fetchJson()</code> wrapper that throws a typed <code>ApiError</code> on a non-2xx response, so every hook consumer handles failures the same way.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// api/client.js — the entire network layer</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">API_BASE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">VITE_API_URL</span><span class="w"> </span><span class="o">||</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="s2">"http://localhost:5050"</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ApiError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ApiError"</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">status</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchJson</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">API_BASE</span><span class="si">}${</span><span class="nx">path</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ApiError</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">path</span><span class="si">}</span><span class="sb"> responded with </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+</code></pre></div>
+<p>Why a custom <code>ApiError</code> class instead of just letting <code>fetch</code>'s own rejection propagate? Plain <code>fetch()</code> only rejects on a network-level failure (DNS, connection refused) — a 404 or 500 response is still a "successful" fetch as far as the Promise is concerned. Wrapping that check in <code>fetchJson()</code> means every caller gets the same failure signal (a thrown error) whether the Pi is unreachable or the backend returned a 500, so <code>useApi</code> only needs one catch block to cover both cases.</p>
+<h3 id="fields-each-panel-reads">Fields Each Panel Reads</h3>
+<p>Reverse-engineered from the components' own field access (e.g. <code>detection.confidence</code>, <code>node.cpu_percent</code>) rather than from a separate API spec:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Key fields the frontend reads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/stats</code></td>
+<td><code>total_detections_today</code>, <code>total_people_detected</code>, <code>total_threats_detected</code>, <code>detection_accuracy</code>, <code>active_nodes</code>, <code>total_nodes</code></td>
+</tr>
+<tr>
+<td><code>/api/detections/latest</code></td>
+<td><code>type</code>, <code>threat</code> (bool), <code>confidence</code> (0-1), <code>timestamp</code>, <code>count</code>, <code>location</code>, <code>classes[]</code>, <code>image_url</code></td>
+</tr>
+<tr>
+<td><code>/api/detections</code></td>
+<td><code>detections[]</code> — each with the same shape as <code>/latest</code>, plus <code>id</code></td>
+</tr>
+<tr>
+<td><code>/api/alerts</code></td>
+<td><code>alerts[]</code> — each with <code>id</code>, <code>severity</code> (normal/high), <code>message</code>, <code>timestamp</code></td>
+</tr>
+<tr>
+<td><code>/api/cluster/nodes</code></td>
+<td><code>nodes[]</code> — each with <code>name</code>, <code>role</code> (control-plane/worker), <code>ip</code>, <code>status</code> (Ready/...), <code>cpu_percent</code>, <code>memory_percent</code>, <code>temperature</code>, <code>uptime</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-configuration">Environment Configuration</h2>
+<p>The API base URL is injected at build time via Vite's <code>VITE_</code>-prefixed env vars, so the same build artifact can point at a local mock backend during development or the real Pi gateway in production without touching source:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># .env.example</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Local mock backend (server.js in the mock-backend folder):</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">VITE_API_URL</span><span class="o">=</span>http://localhost:5050
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Real Pi cluster gateway, when deploying against hardware:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># VITE_API_URL=http://192.168.50.1:5000</span>
+</code></pre></div>
+<p>The Grafana panel follows the same pattern with its own <code>VITE_GRAFANA_URL</code>, defaulting to the cluster's Node Exporter Full dashboard embedded in kiosk mode.</p>
+<h2 id="design-system">Design System</h2>
+<p>All colors, spacing radii, and fonts are centralized as CSS custom properties in <code>index.css</code> — a dark "NOC monitor" theme rather than the browser default, deliberately chosen because a status dashboard that is meant to run on a screen continuously benefits from a low-glare, high-contrast palette where color is reserved for signal (green/amber/red status) rather than decoration.</p>
+<table>
+<thead>
+<tr>
+<th>Token group</th>
+<th>Examples</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Surfaces</td>
+<td><code>--bg</code>, <code>--bg-card</code>, <code>--bg-inset</code></td>
+<td>Layered dark backgrounds for depth without borders everywhere</td>
+</tr>
+<tr>
+<td>Accent</td>
+<td><code>--accent-cyan</code>, <code>--accent-violet</code></td>
+<td>Brand color for icons, highlights, focus rings</td>
+</tr>
+<tr>
+<td>Status</td>
+<td><code>--status-good/warn/bad</code> (+ <code>*-dim</code>)</td>
+<td>Single source of truth for green/amber/red across every panel</td>
+</tr>
+<tr>
+<td>Type</td>
+<td><code>--font-display</code>, <code>--font-body</code>, <code>--font-mono</code></td>
+<td>Space Grotesk for headings, Inter for body, JetBrains Mono for numeric/IP data</td>
+</tr>
+</tbody>
+</table>
+<p>Numeric and machine-readable values (IP addresses, timestamps, percentages, the API host in the header) consistently use <code>--font-mono</code> so they are visually distinct from prose labels — a small convention that makes the table and node cards much easier to scan.</p>
+<h3 id="status-tone-thresholds">Status-Tone Thresholds</h3>
+<p>Every health color in the app — topology chips, CPU/memory bars, node badges — comes from one shared function in <code>utils/format.js</code>, so "what counts as a warning" is defined exactly once:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">statusTone</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">warn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"> </span><span class="nx">bad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">70</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">bad</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">;</span><span class="w">   </span><span class="c1">// red — e.g. CPU &gt;= 70%</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">warn</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">"warn"</span><span class="p">;</span><span class="w"> </span><span class="c1">// amber — e.g. CPU &gt;= 40%</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"good"</span><span class="p">;</span><span class="w">                    </span><span class="c1">// green — below both thresholds</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>Defaults of 40%/70% were picked as reasonable general-purpose thresholds for CPU/memory on a Raspberry Pi 3 (1GB RAM, quad-core Cortex-A53) under light inference-adjacent load, not derived from a specific benchmark — they're intentionally exposed as an options argument so a future component could tighten them (e.g. memory on a 1GB Pi 3 arguably deserves a stricter "bad" threshold than CPU) without touching the shared function.</p>
+<h3 id="responsive-breakpoints">Responsive Breakpoints</h3>
+<table>
+<thead>
+<tr>
+<th>Breakpoint</th>
+<th>What changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max-width: 640px</code></td>
+<td>Dashboard outer padding and inter-section gap shrink, for phones</td>
+</tr>
+<tr>
+<td><code>max-width: 860px</code></td>
+<td>The two-column main-grid (Latest Detection + Alerts) collapses to a single column</td>
+</tr>
+<tr>
+<td><code>min-width: 900px</code></td>
+<td>The raw API host debug readout in the header becomes visible (hidden by default on narrow screens)</td>
+</tr>
+</tbody>
+</table>
+<p>The stat cards, topology chips, and node cards don't use fixed breakpoints at all — they use CSS Grid's <code>repeat(auto-fit/auto-fill, minmax(...))</code>, which reflows the column count continuously based on available width instead of jumping at a handful of hard-coded screen sizes. This was chosen because the dashboard genuinely needs to work at three very different widths in practice — a phone checking in remotely, a laptop during development, and the kiosk/TV screen the project is meant to run on — and auto-fit avoids hand-tuning a breakpoint for each.</p>
+<h2 id="accessibility-resilience-details">Accessibility &amp; Resilience Details</h2>
+<ul>
+<li>Every icon-only status pill/panel title carries an <code>aria-label</code> or is paired with visible text — nothing is color-only.</li>
+<li><code>@media (prefers-reduced-motion: reduce)</code> collapses all shimmer/pulse animations to near-zero duration for users who've opted out of motion.</li>
+<li>The confidence ring, connection banner, and filter tabs all set <code>role</code>/<code>aria-*</code> attributes (<code>role="img"</code>, <code>role="alert"</code>, <code>role="tablist"</code>) so the dashboard is usable with a screen reader.</li>
+<li>Broken detection images (a MinIO object that expired or a network blip) fall back silently via <code>onError</code> instead of showing a broken-image icon.</li>
+</ul>
+<h2 id="build-deployment">Build &amp; Deployment</h2>
+<p>The frontend is built as static assets and served by nginx inside the cluster, matching how the rest of the stack runs on k3s.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c"># Dockerfile</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:alpine</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">COPY</span><span class="w"> </span>dist/<span class="w"> </span>/usr/share/nginx/html/
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Rebuild and redeploy (run on Pi 5)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>~/app/frontend
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>frontend:latest<span class="w"> </span>.
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>docker<span class="w"> </span>save<span class="w"> </span>frontend:latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>k3s<span class="w"> </span>ctr<span class="w"> </span>images<span class="w"> </span>import<span class="w"> </span>-
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>sudo<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment/frontend
+</code></pre></div>
+<p>The image intentionally contains no Node.js runtime — <code>npm run build</code> happens once at build time on Pi 5, and the shipped container is just static files behind nginx. This keeps the pod lightweight enough to be comfortable on the resource-constrained k3s workers.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Where it runs</th>
+<th>Exposure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>k3s Deployment (containerized)</td>
+<td>NodePort <code>:30080</code></td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Directly on Pi 5 (outside k3s)</td>
+<td>Port <code>:5000</code> — needs SSH keys to reach Pi 3 nodes for live metrics</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why is the backend not also in Kubernetes?</strong> It SSHs into every Pi 3 node on demand to collect CPU/RAM/temperature/uptime for the dashboard, and mounting SSH keys into a container added complexity without benefit at this scale — so it runs directly on Pi 5 with full filesystem access, while the frontend (which only needs outbound HTTP to the backend) is cleanly containerized.</p>
+<h2 id="known-limitations">Known Limitations</h2>
+<p>In the same spirit as documenting the PXE-boot failure in Task 1, these are the frontend's known gaps rather than things left silently unfinished:</p>
+<ul>
+<li><strong>Alert acknowledgement is not persisted.</strong> Because <code>/api/alerts</code> has no write endpoint yet, "Ack" state lives in a local React <code>Set</code> and resets on page reload or for anyone else viewing the same dashboard from a different browser.</li>
+<li><strong>No authentication.</strong> The dashboard and the API it talks to are both reachable by anyone on the cluster's private LAN (<code>192.168.50.0/24</code>); this was an accepted trade-off given the network is already isolated behind Pi 5's NAT gateway.</li>
+<li><strong>Polling, not push.</strong> At worst, a new detection or alert can take up to one full interval (3-8s depending on the panel) to appear, rather than being instant.</li>
+<li><strong>No offline/local persistence.</strong> If the backend is unreachable for longer than the browser tab stays open, the dashboard has no cached history to fall back to beyond whatever was already in memory from the last successful poll.</li>
+<li><strong>Single language, no i18n.</strong> All copy is hard-coded English text in the JSX rather than routed through a translation layer — acceptable for a course project with one audience.</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>No framework bloat.</strong> Plain CSS custom properties and hand-drawn SVG icons instead of Tailwind/MUI/an icon library keep the bundle small and dependency-free — appropriate for a dashboard that itself runs on constrained hardware.</li>
+<li><strong>One data-fetching pattern, five endpoints.</strong> A single <code>useApi</code> hook with per-panel poll intervals replaces five bespoke fetch effects and keeps failure handling consistent everywhere.</li>
+<li><strong>Stale-but-visible beats blank.</strong> Failed polls never clear existing data — only a banner signals the problem — which matters on hardware where Wi-Fi/SSH hiccups are routine.</li>
+<li><strong>The topology strip is the thesis of the UI.</strong> Leading with a literal per-node health readout, instead of an abstract KPI, keeps the dashboard honest about what it's actually monitoring: nine physical Raspberry Pis.</li>
+<li><strong>Deployment mirrors the constraints of the cluster.</strong> Frontend containerized on k3s; backend runs bare-metal on Pi 5 because it needs direct SSH access — a pragmatic split documented rather than hidden.</li>
+</ul>
+<hr />
+<p><em>Frankfurt University of Applied Sciences — Cloud Computing SS2026 — Group 8</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Sapkale26/Cloud_Computing_Project" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

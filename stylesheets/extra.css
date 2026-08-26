@@ -1,0 +1,229 @@
+/* ===== Group 8 — Edge Computing Cluster: Full homepage styles ===== */
+/* Save at docs/stylesheets/extra.css and reference it in mkdocs.yml:
+   extra_css:
+     - stylesheets/extra.css
+*/
+
+:root {
+  --ec-charcoal: #1f2733;
+  --ec-charcoal-light: #242c38;
+  --ec-amber: #d4a017;
+  --ec-subtext: #a8afbb;
+  --ec-line: #e4e1d8;
+  --ec-text2: #6b7280;
+  --ec-text3: #475066;
+  --ec-black: #000000;
+}
+
+/* ---- HERO: full-bleed, edge to edge ---- */
+.md-content .ec-hero {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-top: -1.2rem;
+  margin-bottom: 0;
+  padding: 3.5rem calc(50vw - 34rem) 3rem;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, var(--ec-charcoal) 0%, var(--ec-charcoal-light) 100%);
+  color: #fff;
+}
+
+@media (max-width: 76rem) {
+  .md-content .ec-hero { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.ec-hero h1.ec-hero__title {
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  line-height: 1.08;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.ec-hero h1.ec-hero__title span { color: var(--ec-amber); }
+
+.ec-hero__subtitle {
+  max-width: 640px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ec-subtext);
+  margin-bottom: 1.8rem;
+}
+
+.ec-hero__badges { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+.ec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.04);
+  font-size: .82rem;
+  color: #c3c9d4;
+  text-decoration: none !important;
+}
+
+.ec-badge--accent { border-color: rgba(212,160,23,0.5); color: var(--ec-amber); }
+
+/* ---- PAGE BODY: wide container, breaks out of the narrow docs column ---- */
+.md-content .ec-page {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  padding: 2.5rem calc(50vw - 34rem) 3rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 76rem) {
+  .md-content .ec-page { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.ec-section-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ec-black);
+  margin: 2.5rem 0 1.2rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--ec-line);
+}
+
+/* ---- Quick links ---- */
+.ec-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--ec-line);
+  border: 1px solid var(--ec-line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ec-card {
+  display: block;
+  padding: 1.2rem 1.4rem;
+  background: var(--md-default-bg-color);
+  text-decoration: none !important;
+  transition: background .15s;
+}
+
+.ec-card:hover { background: var(--md-code-bg-color); }
+
+.ec-card__label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ec-black);
+  margin-bottom: .3rem;
+}
+
+.ec-card__title { font-size: .95rem; font-weight: 600; color: var(--ec-amber); }
+
+/* ---- Metric strip ---- */
+.ec-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--ec-line);
+  border: 1px solid var(--ec-line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ec-metric {
+  background: var(--md-default-bg-color);
+  padding: 1.1rem 1rem;
+  text-align: center;
+}
+
+.ec-metric__value { font-size: 1.55rem; font-weight: 800; color: var(--ec-charcoal); }
+[data-md-color-scheme="slate"] .ec-metric__value { color: var(--ec-amber); }
+.ec-metric__label { font-size: .74rem; color: var(--ec-text2); margin-top: .2rem; }
+
+/* ---- Overview text ---- */
+.ec-overview { max-width: 900px; }
+
+/* ---- Architecture grid ---- */
+.ec-arch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+@media (max-width: 60rem) {
+  .ec-arch-grid { grid-template-columns: 1fr; }
+}
+
+.ec-arch-card {
+  border: 1px solid var(--ec-line);
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+}
+
+.ec-arch-card__title {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ec-amber);
+  margin-bottom: 1rem;
+}
+
+.ec-arch-card pre { margin: 0; }
+
+.ec-node-list { display: flex; flex-direction: column; }
+
+.ec-node {
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--ec-line);
+}
+
+.ec-node:last-child { border-bottom: none; }
+
+.ec-node__name {
+  font-family: var(--md-code-font);
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--ec-charcoal);
+}
+[data-md-color-scheme="slate"] .ec-node__name { color: #fff; }
+
+.ec-node__desc { font-size: .82rem; color: var(--ec-text3); margin-top: .15rem; }
+
+/* ---- Team grid: fixed 3 columns (3-3-1 for 7 members) ---- */
+.ec-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .8rem;
+}
+
+@media (max-width: 60rem) {
+  .ec-team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 30rem) {
+  .ec-team-grid { grid-template-columns: 1fr; }
+}
+
+.ec-team-card {
+  border: 1px solid var(--ec-line);
+  border-radius: 10px;
+  padding: .9rem 1rem;
+}
+
+.ec-team-card__name { font-size: .88rem; font-weight: 700; margin-bottom: .2rem; }
+.ec-team-card__email { font-size: .76rem; color: var(--ec-text2); word-break: break-all; }
+
+.ec-footnote {
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--ec-line);
+  font-size: .85rem;
+  color: var(--ec-text2);
+}
